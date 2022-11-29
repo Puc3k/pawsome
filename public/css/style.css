@@ -25,6 +25,8 @@
     --card-border-radius-4: 2rem;
     --card-border-radius-5: 5rem;
 
+    --container-with-md: 5rem;
+
 }
 
 /* =============================
@@ -36,7 +38,7 @@ GENERAL ======== */
     padding:0; 
     outline: 0;
     border: 0;
-    appearance: 0;
+    appearance: auto;
     list-style: none;
     text-decoration: none;
     box-sizing: border-box;
@@ -280,7 +282,7 @@ FOOTER ======== */
 
 footer {
     background-color: var(--color-gray-900);
-    padding: 5 rem 0 0;
+    padding: 5rem 0 0;
     box-shadow: inset 0 1.5rem 1.5rem rgba(0, 0, 0, 0.2);
 }
 
@@ -489,7 +491,7 @@ MEDIA QUERIES ======== */
     /* =====GENERAL ==== */
     .container {
         width: var(--container-width-lg)
-    };
+    }
 
     h2 {
         font-size: 1.6rem;
@@ -540,7 +542,7 @@ MEDIA QUERIES ======== */
         height: 4.5rem;
         display: flex;
         align-items: center;
-        box-shadow: -2rem 3rem 7rem rgba(0, 0, o, 0.7);
+        box-shadow: -2rem 3rem 7rem rgba(0, 0, 0.7);
         background: var(--color-gray-900);
         border-top: 1px solid var(--color-bg);
         animation: animationDropdown 1s 0s ease forwards;
@@ -571,7 +573,7 @@ MEDIA QUERIES ======== */
         transform: rotateX(90deg);
     }
     100% {
-        transform: rotateX('0deg');
+        transform: rotateX(0deg);
         opacity: 1;
     }
     

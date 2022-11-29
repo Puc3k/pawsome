@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../../public/css/style.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
 
@@ -13,7 +13,7 @@
 <body>
     <nav>
         <div class="container nav_container">
-            <a href="index.html" class="nav_logo">BLOG</a>
+            <a href="index.php" class="nav_logo">BLOG</a>
             <ul class="nav_items">
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="about.html">About</a></li>
@@ -37,16 +37,26 @@
 <!-- ======end of nav =====-->
 <section class="form_section">
     <div class="container form_section-conainer">
-        <h2>Update User</h2>
+        <h2>Add User</h2>
+        <div class="alert_message error">
+            <p>This is an error message</p>
+        </div>
         <form action="" enctype="multipart/form-data">
             <input type="text" placeholder="First Name">
             <input type="text" placeholder="Last Name">
+            <input type="text" placeholder="Userame">
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Create Password">
+            <input type="password" placeholder="Confirm Password">
             <select>
                 <option value="0">Author</option>
                 <option value="1">Admin</option>
             </select>
-
-            <button type="submit" class="btn">Update User</button>
+            <div class="form_control">
+                <label for="avatar">User Avatar</label>
+                <input type="file" id="avatar">
+            </div>
+            <button type="submit" class="btn">Add User</button>
             
         </form>
     </div>
@@ -114,6 +124,6 @@
 </div>
    
 </footer>
-<script src="./main.js"></script>
+<script src="../../public/js/main.js"></script>
 </body>
 </html>

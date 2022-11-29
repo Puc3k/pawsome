@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../../public/css/style.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
 
@@ -13,13 +13,13 @@
 <body>
     <nav>
         <div class="container nav_container">
-            <a href="index.html" class="nav_logo">BLOG</a>
+            <a href="index.php" class="nav_logo">BLOG</a>
             <ul class="nav_items">
                 <li><a href="blog.html">Blog</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="signin.html">Sign in</a></li>
+                <li><a href="about.html">Blog</a></li>
+                <li><a href="services.html">Blog</a></li>
+                <li><a href="contact.html">Blog</a></li>
+                <li><a href="signin.html">Blog</a></li>
                 <li class="nav_profile">
                 <div class="avatar">
                     <img src="./images/avatar1.jpg">
@@ -35,40 +35,48 @@
     </nav>
 
 <!-- ======end of nav =====-->
-<section class="form_section">
-    <div class="container form_section-conainer">
-        <h2>Add Post</h2>
-        <div class="alert_message error">
-            <p>This is an error message</p>
+
+<section class="singlepost">
+    <div class="container singlepost_container">
+        <h2>Lorem ipsum dolor sit ametimus tempore quoAliquam culpa quidem inventore eligendi.</h2>
+        <div class="post_author-avatar">
+            <img src="./images/avatar2.jpg">
         </div>
-        <form action="" enctype="multipart/form-data">
-            <input type="text" placeholder="Title">
-            <select>
-                <option value="1">Travel</option>
-                <option value="1">Art</option>
-                <option value="1">Science & Technology</option>
-                <option value="1">Travel</option>
-                <option value="1">Travel</option>
-                <option value="1">Travel</option>
-            </select>
-            <div class="form-control">
-                <input type="checkbox" id="is_featured" checked>
-                <label for="is_featured">Featured</label>
-            </div>
-            <div class="form_control">
-                <label for="thumbnail">Add Thumbnail</label>
-                <input type="file" id="thumbnail">
-            </div>
-            <textarea rows="4" placeholder="Description"></textarea>
-            <button type="submit" class="btn">Add Post</button>
-        
-        </form>
+        <div class="post_author-info">
+            <h5>By: Jane Doe</h5>
+            <small>June 10, 2022 - 07:23</small>
+        </div>
+        <div class="singlepost_thumbnail">
+            <img src="./images/blog33.jpg">
+        </div>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus mollitia dicta i
+            n nostrum quod voluptate voluptas animi, id minus earum nam eius error quisquam harum consectetur repudiandae ipsa illo deserunt!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus sint harum autem voluptates, perspiciatis asperiores vel voluptas non, rem, 
+            dolorem illum qui. Nam quas, incidunt officia magnam at amet quisquam.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus mollitia dicta i
+            n nostrum quod voluptate voluptas animi, id minus earum nam eius error quisquam harum consectetur repudiandae ipsa illo deserunt!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus sint harum autem voluptates, perspiciatis asperiores vel voluptas non, rem, 
+            dolorem illum qui. Nam quas, incidunt officia magnam at amet quisquam.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus mollitia dicta i
+            n nostrum quod voluptate voluptas animi, id minus earum nam eius error quisquam harum consectetur repudiandae ipsa illo deserunt!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus sint harum autem voluptates, perspiciatis asperiores vel voluptas non, rem, 
+            dolorem illum qui. Nam quas, incidunt officia magnam at amet quisquam.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus mollitia dicta i
+            n nostrum quod voluptate voluptas animi, id minus earum nam eius error quisquam harum consectetur repudiandae ipsa illo deserunt!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus sint harum autem voluptates, perspiciatis asperiores vel voluptas non, rem, 
+            dolorem illum qui. Nam quas, incidunt officia magnam at amet quisquam.
+        </p>
     </div>
 </section>
 
-
-<!-- ================= footer ======================== -->
-
+<!--- =============== end of single post =========================-->
 
 <footer>
     <div class="div footer_socials">
@@ -128,6 +136,7 @@
 </div>
    
 </footer>
-<script src="./main.js"></script>
+<script src="../../public/js/main.js"></script>
 </body>
 </html>
+
