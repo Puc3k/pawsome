@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Request;
 use App\View;
 use JetBrains\PhpStorm\Pure;
+use App\Controller\ApiController;
 
 class HomeController
 {
@@ -20,6 +21,9 @@ class HomeController
 
     public function run()
     {
+        $api = new ApiController();
+//        $api->getBreedList();
+//        $api->getBreedsImages();
         $this->view->render('index');
     }
 }

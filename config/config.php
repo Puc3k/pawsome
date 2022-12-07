@@ -5,8 +5,8 @@
 return [
     'db' => [
         'host' => 'localhost',
-        'database' => 'db_name',
-        'password' => 'secret',
-        'user' => 'db_user'
+        'database' => 'pawsome',
+        'password' => 'p[HM65YxAJU0qsuS',
+        'user' => 'pawsome'
     ]
 ];

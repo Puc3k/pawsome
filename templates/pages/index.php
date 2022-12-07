@@ -4,7 +4,7 @@
             <img src="./images/blog1.jpg">
         </div>
         <div class="post_info">
-            <a href="category-posts.html" class="category_button"> Wild Life</a>
+            <a href="category-posts.php" class="category_button"> Wild Life</a>
             <h2 class="post_title"><a href="post.html">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                     Perspiciatis, quisquam.
                     Tenetur molestiae. Illo quibusdam libero sint quide.</a>
@@ -36,7 +36,7 @@
             <img src="./images/blog2.jpg">
         </div>
         <div class="post_info">
-            <a href="category-posts.html" class="category_button">Wild Life</a>
+            <a href="category-posts.php" class="category_button">Wild Life</a>
             <h3 class="post_title">
                 <a href="post.html">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis tempore nostrum non ipsum odit.
                     Quo rerum deleniti magnam voluptas aspernatur, soluta atque labore animi eaque sapiente consequatur tempore exercitationem illo.</a>
@@ -61,7 +61,7 @@
             <img src="./images/blog40.jpg">
         </div>
         <div class="post_info">
-            <a href="category-posts.html" class="category_button">Wild Life</a>
+            <a href="category-posts.php" class="category_button">Wild Life</a>
             <h3 class="post_title">
                 <a href="post.html">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis tempore nostrum non ipsum odit.
                     Quo rerum deleniti magnam voluptas aspernatur, soluta atque labore animi eaque sapiente consequatur tempore exercitationem illo.</a>
@@ -86,7 +86,7 @@
             <img src="./images/blog6.jpg">
         </div>
         <div class="post_info">
-            <a href="category-posts.html" class="category_button">Wild Life</a>
+            <a href="category-posts.php" class="category_button">Wild Life</a>
             <h3 class="post_title">
                 <a href="post.html">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis tempore nostrum non ipsum odit.
                     Quo rerum deleniti magnam voluptas aspernatur, soluta atque labore animi eaque sapiente consequatur tempore exercitationem illo.</a>
@@ -111,7 +111,7 @@
             <img src="./images/blog10.jpg">
         </div>
         <div class="post_info">
-            <a href="category-posts.html" class="category_button">Wild Life</a>
+            <a href="category-posts.php" class="category_button">Wild Life</a>
             <h3 class="post_title">
                 <a href="post.html">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis tempore nostrum non ipsum odit.
                     Quo rerum deleniti magnam voluptas aspernatur, soluta atque labore animi eaque sapiente consequatur tempore exercitationem illo.</a>
@@ -136,7 +136,7 @@
             <img src="./images/blog3.jpg">
         </div>
         <div class="post_info">
-            <a href="category-posts.html" class="category_button">Wild Life</a>
+            <a href="category-posts.php" class="category_button">Wild Life</a>
             <h3 class="post_title">
                 <a href="post.html">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis tempore nostrum non ipsum odit.
                     Quo rerum deleniti magnam voluptas aspernatur, soluta atque labore animi eaque sapiente consequatur tempore exercitationem illo.</a>
@@ -161,7 +161,7 @@
             <img src="./images/blog4.jpg">
         </div>
         <div class="post_info">
-            <a href="category-posts.html" class="category_button">Wild Life</a>
+            <a href="category-posts.php" class="category_button">Wild Life</a>
             <h3 class="post_title">
                 <a href="post.html">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis tempore nostrum non ipsum odit.
                     Quo rerum deleniti magnam voluptas aspernatur, soluta atque labore animi eaque sapiente consequatur tempore exercitationem illo.</a>
