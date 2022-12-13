@@ -1,6 +1,10 @@
 # PHP
 [Trello](https://trello.com/b/os4W8MXa/php)
-
+## Plik konfiguracyjny
+/config/.config.php
++ skopiować i usunąć kropkę
++ uzupełnić dane do bazy
++ w repo powinien latać tylko plik .config.php
 ## Jak zrobić baze?
 skopiować to :) (PS: jak się przesunie i najedzie w prawym górnym rogu to jest przycisk)
 
