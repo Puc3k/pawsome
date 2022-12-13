@@ -1,5 +1,5 @@
 # PHP
-[Trelo] (https://trello.com/b/os4W8MXa/php)
+[Trelo](https://trello.com/b/os4W8MXa/php)
 
 ## Jak zrobić baze?
 skopiować to :) (PS: jak się przesunie i najedzie w prawym górnym rogu to jest przycisk)
