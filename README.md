@@ -1,6 +1,8 @@
 # PHP
 
-``
+## Jak zrobić baze:
+
+```
 CREATE DATABASE IF NOT EXISTS `pawsome` DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_general_ci; CREATE TABLE `pawsome`.`breed_images` 
 ( `id` int NOT NULL, `breed_id` int NOT NULL, `image` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL ) 
 ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci; ALTER TABLE `pawsome`.`breed_images` 
@@ -10,4 +12,4 @@ MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9481 ; CREATE TABLE `paw
 CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 
 COLLATE=utf8mb4_general_ci; ALTER TABLE `pawsome`.`breed_list` ADD PRIMARY KEY (`id`); ALTER TABLE `pawsome`.
 `breed_list` MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149 ;
-``
+```
