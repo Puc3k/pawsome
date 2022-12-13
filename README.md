@@ -1,7 +1,7 @@
 # PHP
 
 ## Jak zrobić baze?
-skopiować to :) jak się przesunie to jest przycisk
+skopiować to :) (PS: jak się przesunie i najedzie w prawym górnym rogu to jest przycisk)
 
 ```
 CREATE DATABASE IF NOT EXISTS `pawsome` DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_general_ci; CREATE TABLE `pawsome`.`breed_images` 
