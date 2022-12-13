@@ -14,11 +14,9 @@ require_once("../src/Utils/debug.php");
 $configuration = require_once("../config/config.php");
 
 use App\Controller\HomeController;
-use App\Request;
 
-$request = new Request($_GET, $_POST, $_SERVER);
+$app = new HomeController();
 
-$app = new HomeController($request);
 $app->run();
 
 

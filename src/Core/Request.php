@@ -1,12 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Core;
 
 class Request
 {
-    private $get = [];
-    private $post = [];
-    private $server = [];
+    private array $get = [];
+    private array $post = [];
+    private array $server = [];
 
     public function __construct(array $get, array $post, array $server)
     {

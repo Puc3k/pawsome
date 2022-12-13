@@ -1,7 +1,6 @@
 <?php
 //Przykładowy plik konfiguracyjny, usunąć kropke z nazwy!!
-//Start sesji
-session_start();
+const SESSION_LOGGED_USER = 'user'; //sesja jeśli user zalogowany
 
 //Dostępy do bazy danych
 
