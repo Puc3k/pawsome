@@ -6,9 +6,7 @@ use App\Core\Controller;
 
 class HomeController extends Controller
 {
-    protected const DEFAULT_ACTION = 'list';
-
-    public function run()
+    public function index()
     {
         $api = new ApiController();
 //        $api->getBreedList();

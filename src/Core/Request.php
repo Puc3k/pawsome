@@ -39,4 +39,9 @@ class Request
     {
         return $this->post[$name] ?? $default;
     }
+
+    public function getUri()
+    {
+        return $this->server['REQUEST_URI'] ?? '';
+    }
 }

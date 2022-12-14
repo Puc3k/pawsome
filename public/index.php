@@ -13,10 +13,7 @@ require_once("../src/Utils/debug.php");
 //Plik konfiguracyjny
 $configuration = require_once("../config/config.php");
 
-use App\Controller\HomeController;
-
-$app = new HomeController();
-
+$app = new App\Core\App;
 $app->run();
 
 
