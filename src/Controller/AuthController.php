@@ -3,87 +3,71 @@
 namespace App\Controller;
 
 use App\Core\Controller;
+use App\Helpers\Database;
 use App\Helpers\Session;
+use App\Model\User;
+use JetBrains\PhpStorm\NoReturn;
+use Throwable;
 
 class AuthController extends Controller
 {
-    public function checkIsUserLogged()
+    public function __construct()
     {
-        if (!Session::exists(SESSION_LOGGED_USER)) {
-            $this->view->render('login', [
-                'firstName' => Session::get('firstName') ?? null,
-                'lastName' => Session::get('lastName') ?? null,
-                'userName' => Session::get('userName') ?? null,
-                'email' => Session::get('email') ?? null,
-                'createPassword' => Session::get('createPassword') ?? null,
-                'confirmPassword' => Session::get('confirmPassword') ?? null,
-            ]);
-
-            Session::destroy();
-        }
+        $this->checkIsUserLogged();
     }
+
 
     public function login(array $post)
     {
-        if($this->request->postParam('submit'))
-        {
-            $firstName = filter_var($_POST['firstName'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $lastName = filter_var($_POST['lastName'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $userName = filter_var($_POST['userName'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
-            $createPassword = filter_var($_POST['createPassword'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $confirmPassword= filter_var($_POST['confirmPassword'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $avatar = $_FILES['avatar'];
+        if ($this->request->postParam('submit')) {
+            $validated = $this->validLoginData();
 
-            //check input values
-            if (!$firstName) {
-                $_SESSION['signup'] = "Podaj imię";
-            } elseif (!$lastName) {
-                $_SESSION['signup'] = "Podaj nazwisko";
-            } elseif (!$userName) {
-                $_SESSION['signup'] = "Podaj nazwę użytkownika";
-            } elseif (!$email) {
-                $_SESSION['signup'] = "Podaj email";
-            } elseif (strlen($createPassword) < 8 || strlen($confirmPassword) < 8) {
-                $_SESSION['signup'] = "Hasło powinno mieć min 8 znaków";
-            } elseif (!$avatar['name']) {
-                $_SESSION['signup'] = "Proszę dodaj zdjęcie profilowe";
+            //Check input values
+            if (!$validated['firstName']) {
+                Session::put('error', 'Podaj imię');
+            } elseif (!$validated['lastName']) {
+                Session::put('error', 'Podaj nazwisko');
+            } elseif (!$validated['userName']) {
+                Session::put('error', 'Podaj nazwę użytkownika');
+            } elseif (!$validated['email']) {
+                Session::put('error', 'Podaj email');
+            } elseif (strlen($validated['createPassword']) < 8 || strlen($validated['confirmPassword']) < 8) {
+                Session::put('error', 'Hasło powinno mieć min 8 znaków');
+            } elseif (!$validated['avatar']['name']) {
+                Session::put('error', 'Proszę dodaj zdjęcie profilowe');
             } else {
                 //check if passwords don't match
-                if ($createPassword !== $confirmPassword) {
-                    $_SESSION['signup'] = "Hasła nie są jednakowe";
+                if ($validated['createPassword'] !== $validated['confirmPassword']) {
+                    Session::put('error', 'Hasła nie są jednakowe');
                 } else {
                     //hash password
-                    $hashed_password = password_hash($createPassword, PASSWORD_DEFAULT);
-                    //check if userName or emial already exist
-                    $user_check_query = "SELECT * FROM users WHERE userName='$userName' OR email='$email'";
-                    $user_check_result = mysqli_query($connection, $user_check_query);
-                    if (mysqli_num_rows($user_check_result) > 0) {
-                        $_SESSION['signup'] = "Email już był wykorzystany do założenia konta";
+                    $hashedPassword = password_hash($validated['createPassword'], PASSWORD_DEFAULT);
+                    $userExist = User::checkIfUserExist($validated['userName'], $validated['email']);
+                    if ($userExist) {
+                        Session::put('error', 'Email już był wykorzystany do założenia konta');
 
                     } else {
                         //work on avatar
                         //rename avatar
                         $time = time(); //make each name unique using current timestamp
-                        $avatar_name = $time . $avatar['name'];
-                        $avatar_tmp_name = $avatar['tmp_name'];
-                        $avatar_destination_path = 'images/' . $avatar_name;
-
+                        $avatarName = $time . $validated['avatar']['name'];
+                        $avatarTmpName = $validated['avatar']['tmp_name'];
+                        $avatarDestinationPath = 'images/' . $avatarName;
 
                         //make sure file is an image
-                        $allowed_files = ['png', 'jpg', 'jpeg'];
-                        $extension = explode('.', $avatar_name);
+                        $allowedExtensions = ['png', 'jpg', 'jpeg'];
+                        $extension = explode('.', $avatarName);
                         $extension = end($extension);
-                        if(in_array($extension, $allowed_files)) {
+                        if (in_array($extension, $allowedExtensions)) {
                             //make sure image is not too large (1mb+)
-                            if($avatar['size'] < 1000000) {
+                            if ($validated['avatar']['size'] < 1000000) {
                                 //upload avatar
-                                move_uploaded_file($avatar_tmp_name, $avatar_destination_path);
+                                move_uploaded_file($avatarTmpName, $avatarDestinationPath);
                             } else {
-                                $_SESSION['signup'] = 'File size too big. Should be less that 1mb';
+                                Session::put('error', 'Plik jest zbyt duży, maksymalny rozmiar to 1MB');
                             }
                         } else {
-                            $_SESSION['signup'] = 'Zły format';
+                            Session::put('error', 'Zły format');
                         }
 
                     }
@@ -91,36 +75,64 @@ class AuthController extends Controller
 
             }
             //redirect back to signup if there was any problem
-            if(isset($_SESSION['signup'])) {
+            if (isset($_SESSION['error'])) {
                 //pass form data back to signup page
                 $_SESSION['signup-data'] = $_POST;
-                header('location: ' . ROOT_URL . 'signup.php');
+                header('location: /signup');
                 die();
             } else {
-                //insert new user into db
-                $insert_user_query = "INSERT INTO users SET firstName='$firstName', lastName = '$lastName', userName ='$userName', email ='$email', password = '$hashed_password',
-         avatar = '$avatar_name', is_admin = 0";
+                try {
+                    $db = Database::getInstance()->getConnection();
+                    //param binding
+                    $query = $db->prepare('
+                    INSERT INTO users (first_name, last_name, username, email, password, avatar, is_admin) 
+                    VALUES (:firstName, :lastName, :username, :email, :password, :avatar, :isAdmin)');
 
-                $insert_user_result = mysqli_query($connection, $insert_user_query);
+                    $query->execute([
+                        'firstName' => $validated['firstName'],
+                        'last_name' => $validated['firstName'],
+                        'username' => $validated['firstName'],
+                        'email' => $validated['firstName'],
+                        'password' => $hashedPassword,
+                        'avatar' => $avatarName,
+                        'isAdmin' => 0,
+                    ]);
 
-                if(!mysqli_errno($connection)) {
-                    //redirect to login page with succes message
-                    $_SESSION['signup-succes'] = "Zarejestrowano pomyślnie. Zaloguj się";
-                    header('location' . ROOT_URL . 'signin.php');
-                    die();
+                } catch (Throwable) {
+                    Session::put('error', 'Błąd podczas tworzenia użytkownika. Spróbuj ponownie');
                 }
+
+                Session::put('success', 'Zarejestrowano pomyślnie. Zaloguj się');
+
+                header('location' . APP_URL . '/signin');
+                die();
             }
 
         } else {
             //if button wasn't clicked, bounce back to signup page
-            header('location: ' . ROOT_URL . 'signup.php');
+            header('location: ' . APP_URL . '/signup');
             die();
         }
 
     }
 
-    public function logout()
+    #[NoReturn] public function logout()
     {
+        session_destroy();
+        header('location: ' . APP_URL);
+        die();
+    }
 
+    public function validLoginData(): array
+    {
+        $data['firstName'] = filter_var($_POST['firstName'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $data['lastName'] = filter_var($_POST['lastName'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $data['userName'] = filter_var($_POST['userName'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $data['email'] = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+        $data['createPassword'] = filter_var($_POST['createPassword'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $data['confirmPassword'] = filter_var($_POST['confirmPassword'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $data['avatar'] = $_FILES['avatar'];
+
+        return $data ?? [];
     }
 }

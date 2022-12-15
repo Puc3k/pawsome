@@ -2,6 +2,7 @@
 
 namespace App\Core;
 
+use App\Controller\AuthController;
 use App\Controller\HomeController;
 use JetBrains\PhpStorm\NoReturn;
 
@@ -37,9 +38,10 @@ class App
             '/' => (new HomeController)->index(),
             '/ranking' => (new HomeController())->ranking(),
             '/quiz' => (new QuizController)->ranking(),
+            '/login' => (new AuthController)->login($_POST),
             default => actionNotFound()
         };
-        
+
     }
 
     #[NoReturn] private function actionNotFound()

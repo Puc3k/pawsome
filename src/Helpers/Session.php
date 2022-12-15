@@ -47,6 +47,4 @@ class Session
         }
         return false;
     }
-
-
 }
