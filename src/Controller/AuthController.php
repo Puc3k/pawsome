@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Core\Controller;
+use App\Core\Helper;
 use App\Helpers\Database;
 use App\Helpers\Session;
 use App\Model\User;
@@ -13,6 +14,7 @@ class AuthController extends Controller
 {
     public function __construct()
     {
+        parent::__construct();
         $this->checkIsUserLogged();
     }
 
@@ -118,9 +120,12 @@ class AuthController extends Controller
 
     #[NoReturn] public function logout()
     {
-        session_destroy();
-        header('location: ' . APP_URL);
+        Session::destroy();
+        $destination = Helper::getHostname();
+
+        header("Location: $destination/");
         die();
+
     }
 
     public function validLoginData(): array
@@ -135,4 +140,5 @@ class AuthController extends Controller
 
         return $data ?? [];
     }
+
 }

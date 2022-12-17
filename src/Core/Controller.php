@@ -2,19 +2,21 @@
 
 namespace App\Core;
 
+use App\Helpers\Config;
 use App\Helpers\Session;
 
 class Controller
 {
-    private const DEFAULT_ACTION = 'list';
-    protected $view = null;
-    protected $request = null;
+    protected const SESSION_LOGGED_USER = 'user'; //sesja jeśli user zalogowany
+
+    protected View $view;
+    protected ?Request $request;
+    protected $config;
+
 
     public function __construct()
     {
-        //Start sesji
-        Session::init();
-
+        $this->config = Config::getConfig();
         $this->view = new View();
         $this->request = new Request($_GET, $_POST, $_SERVER);
 
@@ -22,7 +24,9 @@ class Controller
 
     public function checkIsUserLogged()
     {
-        if (!Session::exists(SESSION_LOGGED_USER)) {
+
+        if (!Session::exists(self::SESSION_LOGGED_USER)) {
+
             $this->view->render('login', [
                 'firstName' => Session::get('firstName') ?? null,
                 'lastName' => Session::get('lastName') ?? null,
@@ -34,10 +38,5 @@ class Controller
 
             Session::destroy();
         }
-    }
-
-    private function action(): string
-    {
-        return $this->request->getParam('action', self::DEFAULT_ACTION);
     }
 }

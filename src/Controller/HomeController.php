@@ -8,9 +8,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $api = new ApiController();
-        $api->getBreedList();
-        $api->getBreedsImages();
+//        $api = new ApiController();
+//        $api->getBreedList();
+//        $api->getBreedsImages();
+
 
         $this->view->render('index');
     }

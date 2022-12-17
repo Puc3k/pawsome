@@ -4,18 +4,20 @@ namespace App\Core;
 
 use App\Controller\AuthController;
 use App\Controller\HomeController;
+use App\Controller\UserController;
+use App\Helpers\Session;
 use JetBrains\PhpStorm\NoReturn;
 
 class App
 {
     private const DEFAULT_ACTION = 'home';
     protected ?Request $request;
-    
+
     public function __construct()
     {
+        //Start sesji
+        Session::init();
         $this->request = new Request($_GET, $_POST, $_SERVER);
-        $url = $this->parseUrl();
-
     }
 
     private function parseUrl()
@@ -28,16 +30,20 @@ class App
 
     }
 
-    public function run()
+    public function run(): void
     {
+        //Wywołanei metody do pobrania i parsowania URL
         $url = $this->parseUrl();
 
+        //Prosty routing - w zależności od url wywoływany jest odpowiedni kontroler i metoda
         match ($url[0]) {
             'home' => (new HomeController)->index(),
             'ranking' => (new HomeController())->ranking(),
             'quiz' => (new QuizController)->ranking(),
             'login' => (new AuthController)->login($_POST),
-            default => $this->actionNotFound()
+            'logout' => (new AuthController)->logout(),
+            'user-profile' => (new UserController())->index(),
+            default => $this->actionNotFound() //
         };
 
     }

@@ -15,6 +15,7 @@ class Session
     //Niszczenie sesji
     public static function destroy()
     {
+        if (session_status() === PHP_SESSION_ACTIVE)
         session_destroy();
     }
 

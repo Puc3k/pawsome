@@ -19,10 +19,12 @@ class Database
     private function __construct()
     {
         try {
+            $config = Config::getConfig();
+
             $this->connection = new PDO(
-                "mysql:host=" . $this->host . ";port=3306;charset=utf8mb4;dbname=$this->database",
-                $this->username,
-                $this->password
+                "mysql:host=" . $config['db']['host'] . ";port=3306;charset=utf8mb4;dbname={$config['db']['database']}",
+                $config['db']['user'],
+                $config['db']['password']
             );
         } catch (PDOException $e) {
             exit('Błąd podczas łączenia z bazą danych: ' . $e->getCode());

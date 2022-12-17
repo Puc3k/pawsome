@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Helpers\Database;
+use App\Helpers\Session;
 
 class ApiController
 {
@@ -16,6 +17,7 @@ class ApiController
 
     private function callApi(string $endpoint)
     {
+
         $url = $this->apiUrl . $endpoint;
         curl_setopt($this->curl, CURLOPT_URL, $url);
         curl_setopt($this->curl, CURLOPT_HTTPHEADER, [
@@ -35,7 +37,7 @@ class ApiController
         return json_decode($curlData, true) ?? [];
     }
 
-    public function getBreedList()
+    public function getBreedList(): void
     {
         $breedList = $this->callApi('breeds/list/all');
         if (!empty($breedList) && $breedList['status'] == 'success') {
@@ -59,7 +61,7 @@ class ApiController
         }
     }
 
-    public function getBreedsImages()
+    public function getBreedsImages(): void
     {
         $db = Database::getInstance()->getConnection();
         $query = $db->prepare('SELECT * FROM breed_list');

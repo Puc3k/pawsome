@@ -24,7 +24,7 @@
             </div>
             <textarea rows="4" placeholder="Description"></textarea>
             <button type="submit" class="btn">Add Post</button>
-        
+
         </form>
     </div>
 </section>
