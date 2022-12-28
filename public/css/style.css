@@ -1,6 +1,19 @@
 body {
     margin: auto;
     padding: auto;
-    background-color: burlywood;
+}
+main
+{
+    margin: 0;
+    padding: 0;
+    min-height: calc(100vh - 80px);
+}
+.game
+{
+    background-image: url(../../images/background.png);
+    image-orientation: from-image;
+    background-size: cover;
+    background-position:center;
+    min-height: calc(100vh - 80px);
 }
 

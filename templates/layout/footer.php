@@ -1,18 +1,12 @@
-<footer>
-    <div class="div footer_socials">
-        <a href="https://youtube.com" target="_blank"><i class="uil uil-youtube"></i></a>
-        <a href="https://facebook.com"  target="_blank"><i class="uil uil-facebook-f"></i></a>
-        <a href="https://instagram.com"  target="_blank"><i class="uil uil-instagram-alt"></i></a>
-        <a href="https://linkedin.com"  target="_blank"><i class="uil uil-linkedin"></i></a>
-        <a href="https://twitter.com"  target="_blank"><i class="uil uil-twitter"></i></a>
+<footer
+  class="footer mt-auto py-3 d-flex flex-wrap justify-content-between align-items-center px-3 position-relative bg-light bottom-0">
+  <div class="col-md-4 d-flex align-items-center bg-light">
+    <span class="mb-3 mb-md-0 text-muted">© 2022 Pawsome</span>
+  </div>
 
-    </div>
-
-    <div class="container footer_container">
-        Pawsome
-
-    </div>
-    <div class="footer_copyright">
-        <small>Copyright &copy; Pawsome</small>
-    </div>
+  <ul class="nav col-md-4 justify-content-end list-unstyled">
+    <li class="ms-3"><a class="text-muted" href="#"><i class="bi bi-twitter"></i></a></li>
+    <li class="ms-3"><a class="text-muted" href="#"><i class="bi bi-instagram"></i></a></li>
+    <li class="ms-3"><a class="text-muted" href="#"><i class="bi bi-facebook"></i></a></li>
+  </ul>
 </footer>
