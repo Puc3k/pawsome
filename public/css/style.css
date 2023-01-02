@@ -9,7 +9,7 @@ main
 }
 .quiz-index
 {
-    background-image: url(../../images/background.png);
+    background-image: url(../images/background.png);
     image-orientation: from-image;
     background-size: cover;
     background-position:center;
@@ -18,7 +18,7 @@ main
 
 .quiz
 {
-    background-image: url(../../images/background.png);
+    background-image: url(../images/background.png);
     image-orientation: from-image;
     background-size: cover;
     background-position:center;

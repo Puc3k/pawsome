@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-5">
                     <div class="card shadow-sm m-1">
-                        <div class="dog-image" style="background-image: url(../../images/dog1.jpg);">
+                        <div class="dog-image" style="background-image: url(../../public/images/dog1.jpg);">
                         </div>
                         <div class="card-body">
                             <p class="card-text text-center">Przykładowa rasa #1</p>
@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-lg-5">
                     <div class="card shadow-sm m-1 mb-5">
-                        <div class="dog-image" style="background-image: url(../../images/dog2.jpg);">
+                        <div class="dog-image" style="background-image: url(../../public/images/dog2.jpg);">
                         </div>
                         <div class="card-body">
                             <p class="card-text text-center">Przykładowa rasa #2</p>

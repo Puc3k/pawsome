@@ -1,6 +1,7 @@
 <?php
 
 use App\Helpers\Auth;
+
 ?>
 <?php Auth::init() ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center py-2 py-lg-3">
@@ -9,7 +10,9 @@ use App\Helpers\Auth;
             <img src="../../images/logo.png" class="mx-2 mb-2" width="32" height="32">
             <span class="fs-4 bold">Pawsome</span>
         </a>
-        <button class="navbar-toggler" class="py-0 px-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" class="py-0 px-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false"
+                aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -22,31 +25,33 @@ use App\Helpers\Auth;
                     <a class="nav-link" href="#">Statysyki</a>
                 </li>
                 <?php if (Auth::admin()): ?>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-circle fs-4"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#">Twój profil</a></li>
-                        <li><a class="dropdown-item" href="#">Lista użytkowników</a></li>
-                        <li><a class="dropdown-item" href="#">Wszystkie statystyki</a></li>
-                        <li><a class="dropdown-item" href="#">Wyloguj</a></li>
-                    </ul>
-                </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"><i
+                                    class="bi bi-person-circle fs-4"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Twój profil</a></li>
+                            <li><a class="dropdown-item" href="#">Lista użytkowników</a></li>
+                            <li><a class="dropdown-item" href="#">Wszystkie statystyki</a></li>
+                            <li><a class="dropdown-item" href="#">Wyloguj</a></li>
+                        </ul>
+                    </li>
                 <?php elseif (Auth::user()): ?>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-circle fs-4"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#">Twój profil</a></li>
-                        <li><a class="dropdown-item" href="#">Twoje statystyki</a></li>
-                        <li><a class="dropdown-item" href="#">Wyloguj</a></li>
-                    </ul>
-                </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"><i
+                                    class="bi bi-person-circle fs-4"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Twój profil</a></li>
+                            <li><a class="dropdown-item" href="#">Twoje statystyki</a></li>
+                            <li><a class="dropdown-item" href="#">Wyloguj</a></li>
+                        </ul>
+                    </li>
                 <?php elseif (Auth::guest()): ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Zaloguj</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Zarejestruj</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Zaloguj</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Zarejestruj</a>
+                    </li>
                 <?php endif; ?>
             </ul>
         </div>
