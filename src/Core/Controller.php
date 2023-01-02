@@ -39,4 +39,10 @@ class Controller
             Session::destroy();
         }
     }
+
+    public function redirect(string $uri)
+    {
+        header("Location: $uri");
+        exit();
+    }
 }

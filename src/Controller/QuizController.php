@@ -15,14 +15,16 @@ class QuizController extends Controller
     public function quiz()
     {
         Session::init();
-        $round = Session::exists('quiz-round') ? Session::get('quiz-round') : 0;
+        $round = Session::exists('quiz-round') ? Session::get('quiz-round') : 1;
 
         $checkIsAnswer = $this->request->postParam('round-dog-img'); //User POST send id, battle winner
-        if (!empty($checkIsAnswer)) {
+        //If user send POST
+        if (!empty($checkIsAnswer) && $this->request->isPost()) {
             $quizImages = $this->handleUserAnswer($checkIsAnswer);
-
+            var_dump($quizImages);
             if (!$quizImages) {
-                $this->view->render('index'); //After winner refresh page redirect to index
+                //Todo sprawdzić dlaczego nie kieruje na główną
+                $this->view->render('index');
             }
 
             $isWinner = $this->isWinner($quizImages); //Check if is a winner - true/false
@@ -33,7 +35,6 @@ class QuizController extends Controller
                 ];
 
                 Session::destroy(); //End current quiz, clear session data
-
                 $this->view->render('quiz', $viewData);
             }
 
@@ -41,12 +42,12 @@ class QuizController extends Controller
             Session::put('quiz-images', $quizImages);
         }
 
-        if ($round == 0) {
+        //Quiz init
+        if ($round == 1 && !Session::exists('round-dog-img')) {
             try {
                 $images = $this->generateQuizImages();
                 if ($images) {
                     Session::put('quiz-images', $images);
-
                 }
 
             } catch (Throwable) {
@@ -64,11 +65,13 @@ class QuizController extends Controller
                 $this->view->render('index', ['error' => 'Błąd podczas generowania Quizu, spróbuj ponownie.']);
             }
 
-            Session::put('round-dog-img', [$roundImages[0] => $images[$roundImages[0]]['id'], $roundImages[1] => $images[$roundImages[1]]['id']]);
+            if (count($roundImages) > 1) {
+                Session::put('round-dog-img', [$roundImages[0]['id'], $roundImages[1]['id']]);
+            }
 
             $viewData += [
-                'img1' => $images[$roundImages[0]] ?? '',
-                'img2' => $images[$roundImages[1]] ?? ''
+                'img1' => $roundImages[0] ?? '',
+                'img2' => $roundImages[1] ?? ''
             ];
         }
 
@@ -96,7 +99,7 @@ class QuizController extends Controller
         return $data ?? [];
     }
 
-    private function generateRound(array $data)
+    private function generateRound(array $data): bool|array
     {
         if ($data && count($data) > 1) {
             $newData = array_filter($data, function ($data) {
@@ -104,8 +107,7 @@ class QuizController extends Controller
                     return $data;
                 }
             });
-
-            return array_rand($newData, 2);
+            return array_slice($newData, 0, 2);
         }
         return false;
     }
@@ -134,25 +136,29 @@ class QuizController extends Controller
         return array_merge(...$newData) ?? [];
     }
 
-    private function handleUserAnswer(string $answer)
+    private function handleUserAnswer(string $answer): bool|array
     {
         $quizImages = Session::get('quiz-images'); //All current quiz images
         $battleImages = Session::get('round-dog-img'); //Two images from battle A vs B
-
         //If $battleImages is NULL - data in session empty
         if (is_null($battleImages)) {
             return false;
         }
 
         $winnerImage = array_search($answer, $battleImages); //Winner image
-
         unset($battleImages[$winnerImage]); //Remove winner image from battle array
-        $rejectedImage = array_key_first($battleImages); //Get key of rejected image
+        $rejectedImage = reset($battleImages); //Get key of rejected image
+        //Set rejected image status to 0
+        return $this->changeStatus($quizImages, $rejectedImage);
+    }
 
-        if ($quizImages[$rejectedImage]['id'] == $battleImages[$rejectedImage]) {
-            $quizImages[$rejectedImage]['status'] = 0; //Set rejected image status to 0
+    private function changeStatus(array $data, int $id): array
+    {
+        foreach ($data as &$row) {
+            if ($row['id'] == $id) {
+                $row['status'] = 0;
+            }
         }
-
-        return $quizImages;
+        return $data;
     }
 }

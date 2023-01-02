@@ -2,7 +2,7 @@
     <div class="quiz">
         <div class="container">
             <?php if (empty($params['winner'])) : ?>
-                <h1 class="text-center text-light pt-4">Najlepsza rasa psa</h1>
+                <h1 class="text-center text-light pt-4">Najlepsze zdjęcie psa</h1>
                 <h3 class="text-center text-light mt-2"><?= $params['round'] ?? 0 ?>/16</h3>
                 <div class="row">
 
@@ -17,7 +17,7 @@
                                          height="500">
                                 </label>
                                 <div class="card-body">
-                                    <p class="card-text text-center">Przykładowa rasa #1</p>
+                                    <p class="card-text text-center">Zdjęcie #1</p>
                                 </div>
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                                 </label>
 
                                 <div class="card-body">
-                                    <p class="card-text text-center">Przykładowa rasa #2</p>
+                                    <p class="card-text text-center">Zdjęcie #2</p>
                                 </div>
                             </div>
                         </div>
