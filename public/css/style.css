@@ -1,42 +1,50 @@
-body {
-    margin: auto;
-    padding: auto;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-main
-{
+
+main {
     margin: 0;
     padding: 0;
 }
-.quiz-index
-{
-    background-image: url(../../images/background.png);
+
+.quiz-index {
+    background-image: url(../images/background.png);
     image-orientation: from-image;
     background-size: cover;
-    background-position:center;
+    background-position: center;
     min-height: calc(100vh - 80px);
 }
 
-.quiz
-{
-    background-image: url(../../images/background.png);
+.quiz {
+    background-image: url(../images/background.png);
     image-orientation: from-image;
     background-size: cover;
     background-position:center;
     min-height: calc(100vh - 143px);
 }
-.dog-image
-{
+
+.dog-image {
     image-orientation: from-image;
     background-size: cover;
-    background-position:center;
-    width: auto;
-    height: 500px;
+    background-position: center;
 }
-.dog-image-curiosity
+.dog-input{
+    outline: 1rem solid transparent;
+    transition: outline-color .2s ease-in-out;
+
+}
+.dog-input:hover
 {
+    outline-color: rgba(171, 160, 87, 0.5);
+    cursor: pointer;
+}
+
+.dog-image-curiosity {
     image-orientation: from-image;
     background-size: cover;
-    background-position:center;
+    background-position: center;
     width: auto;
     height: 400px;
 }

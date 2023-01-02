@@ -18,6 +18,6 @@ class HomeController extends Controller
 
     public function ranking()
     {
-        $this->view->render('about');
+        $this->view->render('ranking');
     }
 }

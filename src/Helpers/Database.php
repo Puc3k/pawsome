@@ -10,17 +10,12 @@ class Database
 {
     private static ?Database $instance = null;
     private PDO $connection;
-    private string $host = 'localhost';
-    private string $username = 'pawsome';
-    private string $password = 'p[HM65YxAJU0qsuS';
-    private string $database = 'pawsome';
-
 
     private function __construct()
     {
-        try {
-            $config = Config::getConfig();
+        $config = Config::getConfig();
 
+        try {
             $this->connection = new PDO(
                 "mysql:host=" . $config['db']['host'] . ";port=3306;charset=utf8mb4;dbname={$config['db']['database']}",
                 $config['db']['user'],
