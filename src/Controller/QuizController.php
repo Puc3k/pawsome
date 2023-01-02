@@ -21,7 +21,6 @@ class QuizController extends Controller
         //If user send POST
         if (!empty($checkIsAnswer) && $this->request->isPost()) {
             $quizImages = $this->handleUserAnswer($checkIsAnswer);
-            var_dump($quizImages);
             if (!$quizImages) {
                 //Todo sprawdzić dlaczego nie kieruje na główną
                 $this->view->render('index');
