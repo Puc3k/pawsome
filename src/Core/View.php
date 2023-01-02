@@ -16,7 +16,6 @@ class View
         foreach ($params as $key => $param) {
             $clearParams[$key] = match (true) {
                 is_array($param) => $this->escape($param),
-                is_int($param) => $param,
                 $param => htmlentities($param),
                 default => $param,
             };

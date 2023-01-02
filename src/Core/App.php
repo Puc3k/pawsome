@@ -46,7 +46,6 @@ class App
             'user-profile' => (new UserController())->index(),
             default => $this->actionNotFound() //
         };
-
     }
 
     #[NoReturn] private function actionNotFound()
