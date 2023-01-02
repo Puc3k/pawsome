@@ -2,8 +2,8 @@
 
   <div class="quiz-index justify-content-md-middle">
     <div class="container d-flex justify-content-center align-items-center flex-column position-absolute top-50 start-50 translate-middle text-center">
-      <h1 class="text-light">Najlepsza rasa psa</h1>
-      <p class="text-light col-12 col-md-6">Gra z wybieraniem najlepszej rasy psa to zabawna i wciągająca gra, w której gracze wybierają jedną z dwóch dostępnych ras psów. W każdej rundzie gracze wybierają jedną z dwóch ras.</p>
+      <h1 class="text-light">Najlepsze zdjęcie psa</h1>
+      <p class="text-light col-12 col-md-6">Gra z wybieraniem najlepszego zdjęcia psa to zabawna i wciągająca gra, w której gracze wybierają jedno z dwóch dostępnych zdjęć psów. Zwyciężca </p>
       <p><a class="btn btn-lg btn-light" href="/quiz">Graj teraz</a></p>
     </div>
   </div>

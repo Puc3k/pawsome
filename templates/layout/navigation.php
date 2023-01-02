@@ -6,7 +6,7 @@ use App\Helpers\Auth;
 <?php Auth::init() ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center py-2 py-lg-3">
     <div class="container-fluid position-relative bg-light">
-        <a class="navbar-brand d-inline" href="index.php">
+        <a class="navbar-brand d-inline" href="/">
             <img src="../../images/logo.png" class="mx-2 mb-2" width="32" height="32">
             <span class="fs-4 bold">Pawsome</span>
         </a>
