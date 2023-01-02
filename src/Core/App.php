@@ -5,6 +5,7 @@ namespace App\Core;
 use App\Controller\AuthController;
 use App\Controller\HomeController;
 use App\Controller\UserController;
+use App\Controller\QuizController;
 use App\Helpers\Session;
 use JetBrains\PhpStorm\NoReturn;
 
@@ -39,7 +40,7 @@ class App
         match ($url[0]) {
             'home' => (new HomeController)->index(),
             'ranking' => (new HomeController())->ranking(),
-            'quiz' => (new QuizController)->ranking(),
+            'quiz' => (new QuizController)->quiz(),
             'login' => (new AuthController)->login($_POST),
             'logout' => (new AuthController)->logout(),
             'user-profile' => (new UserController())->index(),

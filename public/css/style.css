@@ -6,9 +6,8 @@ main
 {
     margin: 0;
     padding: 0;
-    min-height: calc(100vh - 80px);
 }
-.game
+.quiz-index
 {
     background-image: url(../../images/background.png);
     image-orientation: from-image;
@@ -17,3 +16,27 @@ main
     min-height: calc(100vh - 80px);
 }
 
+.quiz
+{
+    background-image: url(../../images/background.png);
+    image-orientation: from-image;
+    background-size: cover;
+    background-position:center;
+    min-height: calc(100vh - 143px);
+}
+.dog-image
+{
+    image-orientation: from-image;
+    background-size: cover;
+    background-position:center;
+    width: auto;
+    height: 500px;
+}
+.dog-image-curiosity
+{
+    image-orientation: from-image;
+    background-size: cover;
+    background-position:center;
+    width: auto;
+    height: 400px;
+}

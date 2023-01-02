@@ -6,7 +6,7 @@ use App\Helpers\Database;
 
 class User
 {
-    public static function checkIfUserExist(string $userName, strin $email): bool
+    public static function checkIfUserExist(string $userName, string $email): bool
     {
         //check if userName or email already exist
         $db = Database::getInstance()->getConnection();
