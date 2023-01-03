@@ -18,11 +18,12 @@ class QuizController extends Controller
         $round = Session::exists('quiz-round') ? Session::get('quiz-round') : 1;
 
         $checkIsAnswer = $this->request->postParam('round-dog-img'); //User POST send id, battle winner
+
         //If user send POST
         if (!empty($checkIsAnswer) && $this->request->isPost()) {
             $quizImages = $this->handleUserAnswer($checkIsAnswer);
             if (!$quizImages) {
-                //Todo sprawdzić dlaczego nie kieruje na główną
+
                 $this->view->render('index');
             }
 
@@ -33,6 +34,7 @@ class QuizController extends Controller
                     'winner' => $this->getWinner($quizImages) //Pass winner to view
                 ];
 
+                $this->saveQuiz($quizImages, $viewData['winner']);
                 Session::destroy(); //End current quiz, clear session data
                 $this->view->render('quiz', $viewData);
             }
@@ -159,5 +161,20 @@ class QuizController extends Controller
             }
         }
         return $data;
+    }
+
+    private function saveQuiz(array $answers, array $winner): void
+    {
+        try {
+            $db = Database::getInstance()->getConnection();
+            $query = $db->prepare('INSERT INTO quizzes (user_id, answers, winner) VALUES (:userId, :answers, :winner)');
+            $query->execute([
+                'userId' => NULL,
+                'answers' => json_encode($answers),
+                'winner' => json_encode($winner)
+            ]);
+        } catch (Throwable) {
+            $this->view->render('/', ['error' => 'Błąd podczas zapisu do bazy danych.']);
+        }
     }
 }
