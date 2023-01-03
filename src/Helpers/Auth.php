@@ -7,10 +7,10 @@ class Auth
     public static function init()
     {
         if (!Session::exists('role')) {
-            Session::put('role','admin');
+            Session::put('role', 'admin');
         }
         if (!Session::exists('logged')) {
-            Session::put('logged',false);
+            Session::put('logged', true);
         }
     }
 
@@ -22,7 +22,7 @@ class Auth
             if ($logged == false)
                 return true;
         }
-            return false;
+        return false;
     }
 
     public static function user()
@@ -30,10 +30,10 @@ class Auth
         if (Session::exists('role') && Session::exists('logged')) {
             $role = Session::get('role');
             $logged = Session::get('logged');
-            if ($logged == true&&$role=='user')
+            if ($logged == true && $role == 'user')
                 return true;
         }
-            return false;
+        return false;
     }
 
     public static function admin()
@@ -41,9 +41,9 @@ class Auth
         if (Session::exists('role') && Session::exists('logged')) {
             $role = Session::get('role');
             $logged = Session::get('logged');
-            if ($logged == true&&$role=='admin')
+            if ($logged == true && $role == 'admin')
                 return true;
         }
-            return false;
+        return false;
     }
 }

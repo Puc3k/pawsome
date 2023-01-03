@@ -169,7 +169,7 @@ class QuizController extends Controller
             $db = Database::getInstance()->getConnection();
             $query = $db->prepare('INSERT INTO quizzes (user_id, answers, winner) VALUES (:userId, :answers, :winner)');
             $query->execute([
-                'userId' => NULL,
+                'userId' => NULL, //Todo dodać userId jak będzie już logoawnie zrobione
                 'answers' => json_encode($answers),
                 'winner' => json_encode($winner)
             ]);
