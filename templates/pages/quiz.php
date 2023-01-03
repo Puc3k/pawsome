@@ -2,7 +2,7 @@
     <div class="quiz">
         <div class="container">
             <?php if (empty($params['winner'])) : ?>
-                <h1 class="text-center text-light pt-4">Najlepsze zdjęcie psa</h1>
+                <h1 class="text-center text-light pt-4">Wybierz jedno zdjęcie</h1>
                 <h3 class="text-center text-light mt-2"><?= $params['round'] ?? 0 ?>/16</h3>
                 <div class="row">
 
