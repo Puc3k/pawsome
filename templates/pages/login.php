@@ -1,29 +1,46 @@
-<section class="form_section">
-    <div class="container form_section-conainer">
-        <h2>Sign Up</h2>
-        <?php if (isset($_SESSION['signup'])) : ?>
-            <div class="alert_message error">
+<section class="form__section">
+    <div class="container form__section-container">
+        <h2>Zaloguj się</h2>
+        <?php use App\Helpers\Session;
+
+        if (Session::exists('signup-success')) : ?>
+            <div class="alert__message success">
                 <p>
-                    <?= $_SESSION['signup'];
-                    unset($_SESSION['signup']);
+                    <?= $_SESSION['signup-success'];
+                    unset($_SESSION['signup-success']);
+                    ?>
+                </p>
+            </div>
+        <?php elseif (Session::exists('signin')) : ?>
+            <div class="alert__message error">
+                <p>
+                    Session::delete('signin')
+                    <?= $_SESSION['signin'];
+                    unset($_SESSION['signin']);
                     ?>
                 </p>
             </div>
         <?php endif ?>
-        <!-- "multipart/form-data" because we have file upload -->
-        <form action="<?= $_SERVER['HTTP_HOST'] ?>signup-logic.php" enctype="multipart/form-data" method="POST">
-            <input type="text" name="firstName" value="<?= $params['firstName'] ?>" placeholder="First Name">
-            <input type="text" name="lastName" value="<?= $params['lastName'] ?>" placeholder="Last Name">
-            <input type="text" name="userName" value="<?= $params['userName'] ?>"  placeholder="Username">
-            <input type="email" name="email" value="<?= $params['email'] ?>" placeholder="Email">
-            <input type="password" name="createPassword" value="<?= $params['createPassword']?>" placeholder="Create Password">
-            <input type="password" name="confirmPassword" value="<?= $params['confirmPassword']?>" placeholder="Confirm Password">
-            <div class="form_control">
-                <label for="avatar">User Avatar</label>
-                <input type="file" name="avatar" id="avatar">
+
+        <form method="POST">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Podaj adres email</label>
+                <input type="text" class="form-control" name="email" value="<?= $params['email'] ?>" placeholder="Username or Email">
+
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
-            <button type="submit" name="submit" class="btn">Sign Up</button>
-            <small>Already have an account? <a href="signin.php">Sign In</a></small>
+            <div class="mb-3">
+
+                <label for="exampleInputPassword1" class="form-label">Hasło</label>
+                <input type="password" class="form-control" name="password" value="<?= $params['password'] ?? '' ?>" >
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+        <small>Don't have account? <a href="register.php">Zarejestruj się</a></small>
+
     </div>
 </section>

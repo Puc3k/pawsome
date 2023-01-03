@@ -3,16 +3,17 @@
 namespace App\Controller;
 
 use App\Helpers\Database;
-use App\Helpers\Session;
+use CurlHandle;
 
 class ApiController
 {
-    private string $apiUrl = 'https://dog.ceo/api/';
-    private $curl;
+    private string $apiUrl;
+    private false|CurlHandle $curl;
 
-    public function __construct()
+    public function __construct(string $apiUrl)
     {
         $this->curl = curl_init();
+        $this->apiUrl = $apiUrl;
     }
 
     private function callApi(string $endpoint)
@@ -92,5 +93,40 @@ class ApiController
             }
         }
     }
+
+    public function getFactsAboutDogs(int $numberOfFacts = 0): array
+    {
+        $dogFacts = [];
+        for ($i = 0; $i <= $numberOfFacts; $i++) {
+            $dogFactResult = $this->callApi('facts');
+            if (!empty($dogFactResult)) {
+                foreach ($dogFactResult['data'] as $dogFact) {
+                    $dogFacts[] = [
+                        'id' => $dogFact['id'],
+                        'fact' => $dogFact['attributes']['body']
+                    ];
+                }
+            }
+        }
+        return $dogFacts;
+    }
+
+//    public function storeFacts(array $facts)
+//    {
+//        if ($facts && count($facts) > 1) {
+//            foreach ($facts as $fact) {
+//                try {
+//                    $db = Database::getInstance()->getConnection();
+//                    $query = $db->prepare('INSERT INTO dog_facts (fact_id, fact) VALUES (:fact_id, :fact)');
+//
+//                    $query->execute([
+//                        'fact_id' => $fact['id'],
+//                        'fact' => $fact['fact']
+//                    ]);
+//                } catch (Throwable) {
+//                }
+//            }
+//        }
+//    }
 
 }

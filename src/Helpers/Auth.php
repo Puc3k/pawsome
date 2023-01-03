@@ -6,11 +6,12 @@ class Auth
 {
     public static function init()
     {
+        session_destroy();
         if (!Session::exists('role')) {
             Session::put('role', 'admin');
         }
         if (!Session::exists('logged')) {
-            Session::put('logged', true);
+            Session::put('logged', false);
         }
     }
 
