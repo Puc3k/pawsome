@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Helpers\Session;
+
 class View
 {
     public function render(string $page, array $params = []): void

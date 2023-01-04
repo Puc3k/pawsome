@@ -8,6 +8,7 @@ use App\Helpers\Database;
 use App\Helpers\Session;
 use App\Model\User;
 use JetBrains\PhpStorm\NoReturn;
+use PDO;
 use Throwable;
 
 class AuthController extends Controller
@@ -18,8 +19,65 @@ class AuthController extends Controller
         $this->checkIsUserLogged();
     }
 
-
     public function login(array $post)
+    {
+        if ($this->request->postParam('submit')) {
+            $validated = $this->validLoginData();
+
+            if (!$validated['email']) {
+                Session::put('error', 'Podaj adres email');
+            } elseif (!$validated['password']) {
+                Session::put('error', 'Podaj hasło');
+            } else {
+                try {
+                    $db = Database::getInstance()->getConnection();
+                    //param binding
+                    $query = $db->prepare('
+                    SELECT * FROM users WHERE email= :email');
+                    $query->execute([
+                        'email' => $validated['email'],
+
+                    ]);
+                    $data = $query->fetchAll();
+
+                    if ($query->rowCount() == 1) {
+                        // convert the record into assoc array
+                        $user_record = $data = $query->fetchAll(PDO::FETCH_ASSOC);
+                        $db_password = $data['password'];
+                        // compare form password with database password
+                        if (password_verify($validated['password'], $db_password)) {
+                            // set session for access control
+                            Session::put('user-id', $user_record['id']);
+
+
+                        } else {
+                            Session::put('error', 'Dane nie są poprawne');
+                        }
+                    } else {
+                        Session::put('error', 'Nie znaleziono takiego użytkownika');
+                    }
+
+                } catch (Throwable) {
+                    Session::put('error', 'Błąd podczas tworzenia użytkownika. Spróbuj ponownie');
+
+                }
+                // if any problem, redirect back to signin page with login data
+                if (isset($_SESSION['signin'])) {
+                    $_SESSION['signin-data'] = $_POST;
+                    $this->view->render('register');
+                    die();
+                } else {
+                    $this->view->render('login');
+                    die();
+                }
+            }
+        }
+
+
+    }
+
+
+    public function regsiter()
     {
         if ($this->request->postParam('submit')) {
             $validated = $this->validLoginData();
@@ -87,7 +145,7 @@ class AuthController extends Controller
                     $db = Database::getInstance()->getConnection();
                     //param binding
                     $query = $db->prepare('
-                    INSERT INTO users (first_name, last_name, username, email, password, avatar, is_admin) 
+                    INSERT INTO users (username, email, password, avatar, is_admin) 
                     VALUES (:firstName, :lastName, :username, :email, :password, :avatar, :isAdmin)');
 
                     $query->execute([
@@ -106,14 +164,12 @@ class AuthController extends Controller
 
                 Session::put('success', 'Zarejestrowano pomyślnie. Zaloguj się');
 
-                header('location' . APP_URL . '/signin');
-                die();
+                $this->redirect('/register');
             }
 
         } else {
             //if button wasn't clicked, bounce back to signup page
-            header('location: ' . APP_URL . '/signup');
-            die();
+            $this->redirect('/signup');
         }
 
     }
@@ -128,7 +184,7 @@ class AuthController extends Controller
 
     }
 
-    public function validLoginData(): array
+    public function validRegisterData(): array
     {
         $data['firstName'] = filter_var($_POST['firstName'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $data['lastName'] = filter_var($_POST['lastName'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -137,6 +193,14 @@ class AuthController extends Controller
         $data['createPassword'] = filter_var($_POST['createPassword'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $data['confirmPassword'] = filter_var($_POST['confirmPassword'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $data['avatar'] = $_FILES['avatar'];
+
+        return $data ?? [];
+    }
+
+    public function validLoginData(): array
+    {
+        $data['email'] = filter_var($_POST['email'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $data['password'] = filter_var($_POST['password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
         return $data ?? [];
     }

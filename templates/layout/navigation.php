@@ -48,7 +48,7 @@ use App\Helpers\Auth;
                         <a class="nav-link" href="/login">Zaloguj</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Zarejestruj</a>
+                        <a class="nav-link" href="/register">Zarejestruj</a>
                     </li>
                 <?php endif; ?>
             </ul>
