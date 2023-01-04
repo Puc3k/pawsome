@@ -3,7 +3,6 @@
 use App\Helpers\Auth;
 
 ?>
-<?php Auth::init() ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center py-2 py-lg-3">
     <div class="container-fluid position-relative bg-light">
         <a class="navbar-brand d-inline" href="/">
@@ -31,7 +30,7 @@ use App\Helpers\Auth;
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="#">Twój profil</a></li>
                             <li><a class="dropdown-item" href="#">Lista użytkowników</a></li>
-                            <li><a class="dropdown-item" href="#">Wyloguj</a></li>
+                            <li><a class="dropdown-item" href="/logout">Wyloguj</a></li>
                         </ul>
                     </li>
                 <?php elseif (Auth::user()): ?>
@@ -40,7 +39,7 @@ use App\Helpers\Auth;
                                     class="bi bi-person-circle fs-4"></i></a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="#">Twój profil</a></li>
-                            <li><a class="dropdown-item" href="#">Wyloguj</a></li>
+                            <li><a class="dropdown-item" href="/logout">Wyloguj</a></li>
                         </ul>
                     </li>
                 <?php elseif (Auth::guest()): ?>

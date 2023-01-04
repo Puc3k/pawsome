@@ -1,18 +1,4 @@
 <section class="form_section">
-    <?php
-
-    use App\Helpers\Session;
-
-    if (Session::exists('signup')) : ?>
-        <div class="alert__message success">
-            <p>
-                <?= Session::exists('signup');
-                Session::delete('signup');
-                ?>
-            </p>
-        </div>
-    <?php endif ?>
-
     <div class="row">
         <div class="col-md-6 offset-3">
             <p>
@@ -26,14 +12,15 @@
 
                         <div class="mb-4 form-group">
                             <label for="userName" class="form-label">Nazwa użytkownika</label>
-                            <input type="text" name="userName" class="form-control" value="<?= $params['userName'] ?>"
+                            <input type="text" name="userName" class="form-control"
+                                   value="<?= $params['userName'] ?? '' ?>"
                                    placeholder="Podaj nazwę użytkownika">
 
                         </div>
 
                         <div class="mb-4 form-group">
                             <label for="exampleInputEmail1" class="form-label">Podaj adres email</label>
-                            <input type="text" class="form-control" name="email" value="<?= $params['email'] ?>"
+                            <input type="text" class="form-control" name="email" value="<?= $params['email'] ?? '' ?>"
                                    placeholder="Podaj email">
 
                         </div>
@@ -41,21 +28,21 @@
                         <div class="mb-4 form-group">
                             <label for="exampleInputPassword1" class="form-label">Hasło</label>
                             <input type="password" name="createPassword" class="form-control" id="exampleInputPassword1"
-                                   value="<?= $params['createPassword'] ?>" placeholder="Podaj hasło">
+                                   value="" placeholder="Podaj hasło">
                         </div>
 
                         <div class="mb-4 form-group">
                             <label for="exampleInputPassword1" class="form-label">Powtórz hasło</label>
                             <input type="password" name="confirmPassword" class="form-control"
-                                   id="exampleInputPassword1" value="<?= $params['confirmPassword'] ?>"
+                                   id="exampleInputPassword1" value=""
                                    placeholder="Potwierdź hasło">
                         </div>
 
 
-                        <div class="mb-4 form-group">
-                            <label for="avatar" class="form-label">Zdjęcie profilowe</label>
-                            <input type="file" name="avatar" id="avatar">
-                        </div>
+                        <!--                        <div class="mb-4 form-group">-->
+                        <!--                            <label for="avatar" class="form-label">Zdjęcie profilowe</label>-->
+                        <!--                            <input type="file" name="avatar" id="avatar">-->
+                        <!--                        </div>-->
 
                         <div class="form-group">
 
@@ -69,4 +56,3 @@
         </div>
     </div>
 </section>
-

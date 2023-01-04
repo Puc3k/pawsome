@@ -19,8 +19,6 @@
         <div class="row border-bottom">
             <div class="col-lg-7">
                 <h2 class="fw-normal lh-1 mt-4">Ciekawostki</h2>
-
-                <!--                    --><?php //var_dump($params) ?>
                 <?php foreach ($params['dogFact'] ?? [] as $key => $value) : ?>
                     <p class="lead">
                         <?= "<strong>" . $key + 1 . ".</strong> {$value['fact']}" ?>
