@@ -4,47 +4,42 @@ namespace App\Helpers;
 
 class Auth
 {
-    public static function init()
+    public static function guest(): bool
     {
-        session_destroy();
-        if (!Session::exists('role')) {
-            Session::put('role', 'admin');
+        if (!Session::exists('role') && !Session::exists('logged')) {
+            return true;
         }
-        if (!Session::exists('logged')) {
-            Session::put('logged', false);
-        }
+        return false;
     }
 
-    public static function guest()
+    public static function user(): bool
     {
         if (Session::exists('role') && Session::exists('logged')) {
             $role = Session::get('role');
             $logged = Session::get('logged');
-            if ($logged == false)
+            if ($logged && $role == 'user')
                 return true;
         }
         return false;
     }
 
-    public static function user()
+    public static function admin(): bool
     {
         if (Session::exists('role') && Session::exists('logged')) {
             $role = Session::get('role');
             $logged = Session::get('logged');
-            if ($logged == true && $role == 'user')
+            if ($logged && $role == 'admin')
                 return true;
         }
         return false;
     }
 
-    public static function admin()
+    public static function isUserLogged(): bool
     {
-        if (Session::exists('role') && Session::exists('logged')) {
-            $role = Session::get('role');
-            $logged = Session::get('logged');
-            if ($logged == true && $role == 'admin')
-                return true;
+        if (!Session::exists('role') && !Session::exists('logged')) {
+            return false;
         }
-        return false;
+        return true;
     }
+
 }

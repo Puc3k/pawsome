@@ -7,6 +7,9 @@
     <!-- navbar -->
     <?php require_once('navigation.php') ?>
 
+    <!--    alerts-->
+    <?php require_once('messages.php') ?>
+
     <!-- content page -->
     <?php require_once("../templates/pages/$page.php"); ?>
 
