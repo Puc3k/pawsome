@@ -12,15 +12,24 @@
     <div class="container">
         <div class="row border-bottom">
             <div class="col-12">
-                <h1 class="text-center my-4">Ciekawostka na dziś </h1>
+                <h1 class="text-center my-4">Losowe ciekawostki o psach</h1>
             </div>
         </div>
 
         <div class="row border-bottom">
             <div class="col-lg-7">
-                <h2 class="fw-normal lh-1 mt-4">Ciekawostka</h2>
+                <h2 class="fw-normal lh-1 mt-4">Ciekawostki</h2>
+
+                <!--                    --><?php //var_dump($params) ?>
+                <?php foreach ($params['dogFact'] ?? [] as $key => $value) : ?>
+                    <p class="lead">
+                        <?= "<strong>" . $key + 1 . ".</strong> {$value['fact']}" ?>
+                    </p>
+                <?php endforeach; ?>
                 <p class="lead">
-                    <?= $params['dogFact'][0]['fact'] ?? 'Niestety skończyły nam się ciekawostki :( ' ?>
+                    <?php if (empty($params['dogFact'][0]['fact'])) : ?>
+                        <?= 'Niestety skończyły nam się ciekawostki :( ' ?>
+                    <?php endif; ?>
                 </p>
             </div>
             <div class="col-lg-5 dog-image-curiosity d-flex justify-content-center align-items-center">

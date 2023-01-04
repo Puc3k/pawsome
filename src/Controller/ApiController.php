@@ -94,10 +94,10 @@ class ApiController
         }
     }
 
-    public function getFactsAboutDogs(int $numberOfFacts = 0): array
+    public function getFactsAboutDogs(int $numberOfFacts = 1): array
     {
         $dogFacts = [];
-        for ($i = 0; $i <= $numberOfFacts; $i++) {
+        for ($i = 0; $i < $numberOfFacts; $i++) {
             $dogFactResult = $this->callApi('facts');
             if (!empty($dogFactResult)) {
                 foreach ($dogFactResult['data'] as $dogFact) {

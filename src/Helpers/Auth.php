@@ -6,7 +6,7 @@ class Auth
 {
     public static function init()
     {
-        session_destroy();
+//        session_destroy();
         if (!Session::exists('role')) {
             Session::put('role', 'admin');
         }
