@@ -21,7 +21,7 @@ use App\Helpers\Auth;
                     <a class="nav-link active" aria-current="page" href="index.php">Strona główna</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/ranking">Statysyki</a>
+                    <a class="nav-link" href="/ranking">Ranking</a>
                 </li>
                 <?php if (Auth::admin()): ?>
                     <li class="nav-item dropdown">
