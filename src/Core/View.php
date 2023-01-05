@@ -10,6 +10,7 @@ class View
     {
         $params = $this->escape($params);
         include_once("../templates/layout/layout.php");
+        exit();
     }
 
     private function escape(array $params): array
