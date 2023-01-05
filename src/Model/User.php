@@ -42,6 +42,25 @@ class User
         return false;
     }
 
+    public static function getUserById(int $id): bool|array
+    {
+        $db = Database::getInstance()->getConnection();
+        //param binding
+        $query = $db->prepare('
+                    SELECT * FROM users WHERE id= :id');
+        $query->execute([
+            'id' => $id,
+
+        ]);
+
+        if ($query->rowCount() == 1) {
+            // convert the record into assoc array
+            return $query->fetch(PDO::FETCH_ASSOC);
+        }
+
+        return false;
+    }
+
     public static function gerUserIdFromSession()
     {
         $isUserLogged = Auth::isUserLogged();
