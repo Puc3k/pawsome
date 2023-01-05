@@ -48,3 +48,11 @@ main {
     width: auto;
     height: 400px;
 }
+
+.form-container{
+    background-image: url(../images/dog-backogrund.jpg);
+    image-orientation: from-image;
+    background-size: cover;
+    background-position:top 81% left 50%;
+    min-height: calc(100vh - 143px);
+}
