@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Core\Controller;
 use App\Helpers\Database;
 use App\Helpers\Session;
+use App\Model\User;
 use PDO;
 use Throwable;
 
@@ -16,7 +17,7 @@ class QuizController extends Controller
     {
         Session::init();
         $round = Session::exists('quiz-round') ? Session::get('quiz-round') : 1;
-
+        
         $checkIsAnswer = $this->request->postParam('round-dog-img'); //User POST send id, battle winner
 
         //If user send POST
@@ -52,7 +53,8 @@ class QuizController extends Controller
                 }
 
             } catch (Throwable) {
-                print_r('Błąd podczas łączenia z bazą danych!');
+                Session::put('error', 'Błąd podczas łączenia z bazą danych!');
+                $this->view->render('index');
             }
         }
 
@@ -63,7 +65,8 @@ class QuizController extends Controller
             $roundImages = $this->generateRound($images);
 
             if (!$roundImages) {
-                $this->view->render('index', ['error' => 'Błąd podczas generowania Quizu, spróbuj ponownie.']);
+                Session::put('error', 'Błąd podczas generowania Quizu, spróbuj ponownie.');
+                $this->view->render('index');
             }
 
             if (count($roundImages) > 1) {
@@ -167,14 +170,15 @@ class QuizController extends Controller
     {
         try {
             $db = Database::getInstance()->getConnection();
-            $query = $db->prepare('INSERT INTO quizzes (user_id, answers, winner) VALUES (:userId, :answers, :winner)');
+            $query = $db->prepare('INSERT INTO quizzes (user_id, winner_id) VALUES (:userId, :winnerId)');
             $query->execute([
-                'userId' => NULL, //Todo dodać userId jak będzie już logoawnie zrobione
-                'answers' => json_encode($answers),
-                'winner' => json_encode($winner)
+                'userId' => User::gerUserIdFromSession() ?? NULL,
+                'winnerId' => $winner['id']
             ]);
-        } catch (Throwable) {
-            $this->view->render('/', ['error' => 'Błąd podczas zapisu do bazy danych.']);
+        } catch (Throwable $e) {
+            var_dump($e);
+            Session::put('error', 'Błąd podczas zapisu do bazy danych.');
+            $this->view->render('index');
         }
     }
 }

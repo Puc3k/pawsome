@@ -43,6 +43,7 @@ class Session
     public static function delete($key): bool
     {
         if (self::exists($key)) {
+            dd($_SESSION[$key]);
             unset($_SESSION[$key]);
             return true;
         }

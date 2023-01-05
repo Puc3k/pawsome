@@ -3,7 +3,7 @@
 namespace App\Core;
 
 use App\Helpers\Config;
-use App\Helpers\Session;
+use JetBrains\PhpStorm\NoReturn;
 
 class Controller
 {
@@ -11,7 +11,7 @@ class Controller
 
     protected View $view;
     protected ?Request $request;
-    protected $config;
+    protected array|false $config;
 
 
     public function __construct()
@@ -22,25 +22,7 @@ class Controller
 
     }
 
-    public function checkIsUserLogged()
-    {
-
-        if (!Session::exists(self::SESSION_LOGGED_USER)) {
-
-            $this->view->render('login', [
-                'firstName' => Session::get('firstName') ?? null,
-                'lastName' => Session::get('lastName') ?? null,
-                'userName' => Session::get('userName') ?? null,
-                'email' => Session::get('email') ?? null,
-                'createPassword' => Session::get('createPassword') ?? null,
-                'confirmPassword' => Session::get('confirmPassword') ?? null,
-            ]);
-
-            Session::destroy();
-        }
-    }
-
-    public function redirect(string $uri)
+    #[NoReturn] public function redirect(string $uri): void
     {
         header("Location: $uri");
         exit();

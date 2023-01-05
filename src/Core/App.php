@@ -33,6 +33,11 @@ class App
 
     public function run(): void
     {
+        session_destroy();
+        //Flash alerts, remove from session
+        Session::delete('error');
+        Session::delete('success');
+
         //Wywołanei metody do pobrania i parsowania URL
         $url = $this->parseUrl();
 
@@ -42,10 +47,10 @@ class App
             'ranking' => (new HomeController())->ranking(),
             'quiz' => (new QuizController)->quiz(),
             'login' => (new AuthController)->login(),
-            'register' => (new AuthController)->regsiter(),
+            'register' => (new AuthController)->register(),
             'logout' => (new AuthController)->logout(),
             'user-profile' => (new UserController())->index(),
-            default => $this->actionNotFound() //
+            default => $this->actionNotFound() //Jeśli nie znalazło strony to strona 404
         };
     }
 

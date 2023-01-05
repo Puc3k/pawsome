@@ -44,4 +44,9 @@ class Request
     {
         return $this->server['REQUEST_URI'] ?? '/';
     }
+
+    public function getPost(): array
+    {
+        return $_POST;
+    }
 }
