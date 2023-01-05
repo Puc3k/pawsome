@@ -11,8 +11,7 @@ class UserController extends Controller
     public function index()
     {
         $isLogged = Auth::isUserLogged();
-        $userId = User::gerUserIdFromSession();
-
+        $userId = User::getUserIdFromSession();
 
         if (!$isLogged || !$userId) {
             $this->redirect('/');
@@ -21,6 +20,15 @@ class UserController extends Controller
         $user = User::getUserById($userId);
 
         $this->view->render('user-profile');
+    }
+
+    public function getUsersList()
+    {
+        if (Auth::admin()) {
+            $usersList = User::getAllUsers();
+            $this->view->render('users-list', ['usersList' => $usersList]);
+        }
+        $this->view->render('index');
     }
 
 }

@@ -52,6 +52,7 @@ class App
             'register' => (new AuthController)->register(),
             'logout' => (new AuthController)->logout(),
             'user-profile' => (new UserController())->index(),
+            'users-list' => (new UserController())->getUsersList(),
             default => $this->actionNotFound() //Jeśli nie znalazło strony to strona 404
         };
     }

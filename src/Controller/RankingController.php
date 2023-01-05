@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Core\Controller;
+use App\Helpers\Auth;
 use App\Helpers\Database;
 use App\Helpers\Session;
 use App\Model\User;
@@ -32,7 +33,7 @@ class RankingController extends Controller
 
     public function getCountQuizzesForUser(): int
     {
-        $userId = User::gerUserIdFromSession() ?? NULL;
+        $userId = User::getUserIdFromSession() ?? NULL;
         if ($userId) {
             $db = Database::getInstance()->getConnection();
             $query = $db->prepare('SELECT COUNT(id) as ilosc FROM `quizzes` WHERE quizzes.user_id=:userId;');
@@ -63,8 +64,8 @@ class RankingController extends Controller
 
     public function getQuizzesDataForUser(): void
     {
-        $userId = User::gerUserIdFromSession() ?? NULL;
-        if($userId)
+        $userId = User::getUserIdFromSession() ?? NULL;
+        if($userId && Auth::user())
         {
             $db = Database::getInstance()->getConnection();
             $query = $db->prepare('SELECT quizzes.user_id,`quizzes`.`winner_id`,count(`quizzes`.`winner_id`) as count,breed_images.image FROM `quizzes` INNER JOIN `breed_images` ON quizzes.winner_id = breed_images.id GROUP BY quizzes.winner_id HAVING quizzes.user_id=:userId ORDER BY count(`quizzes`.`winner_id`) desc');
@@ -86,6 +87,8 @@ class RankingController extends Controller
 
     public function getQuizzesDataForAdmin(): void
     {
+        if(Auth::admin())
+        {
             $db = Database::getInstance()->getConnection();
             $query = $db->prepare('SELECT `quizzes`.`winner_id`,count(`quizzes`.`winner_id`) as count,breed_images.image FROM `quizzes` INNER JOIN `breed_images` ON quizzes.winner_id = breed_images.id GROUP BY quizzes.winner_id ORDER BY count(`quizzes`.`winner_id`) desc');
             $query->execute();
@@ -98,6 +101,8 @@ class RankingController extends Controller
                     'image' => $quizData['image'] //Pass image winner to view
                 ];
             }
-                $this->view->render('ranking-admin', ['rankingData' => $rankingData]);    
+                $this->view->render('ranking-admin', ['rankingData' => $rankingData]);  
+        }
+        $this->view->render('index');
     }
 }
