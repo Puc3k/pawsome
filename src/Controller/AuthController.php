@@ -113,7 +113,7 @@ class AuthController extends Controller
             }
 
             Session::put('success', 'Zarejestrowano pomyślnie. Zaloguj się');
-            $this->view->render('login');
+            $this->redirect('/login');
         }
 
         $this->view->render('register');
