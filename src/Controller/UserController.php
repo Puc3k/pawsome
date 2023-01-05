@@ -10,7 +10,14 @@ class UserController extends Controller
 {
     public function index()
     {
+        $isLogged = Auth::isUserLogged();
         $userId = User::getUserIdFromSession();
+
+        if (!$isLogged || !$userId) {
+            $this->redirect('/');
+        }
+
+        $user = User::getUserById($userId);
 
         $this->view->render('user-profile');
     }

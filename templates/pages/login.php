@@ -1,7 +1,7 @@
-<section class="container-fluid form-container">
-    <div class="row form-container">
+<section class="container-fluid form-container d-flex justify-content-center align-items-center flex-column">
+    <div class="row w-100">
         <div class="col-12 col-md-6 offset-md-3 d-flex justify-content-center align-items-center">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-xl-8 glass-effect p-3 p-lg-4">
                 <h4>Logowanie</h4>
                 <form method="POST">
                     <div class="mb-4 form-group">
@@ -13,15 +13,23 @@
                     <div class="mb-4 form-group">
                         <label for="exampleInputPassword1" class="form-label">Hasło</label>
                         <input type="password" class="form-control" name="password"
-                               value="">
+                               value="" placeholder="Wpisz hasło">
                     </div>
 
-                    <div class="form-group">
-                        <button type="submit" class="form-outline w-25 btn btn-primary">Zaloguj</button>
-                        <small>Nie masz konta? <a href="/register">Zarejestruj się</a></small>
+                    <div class="justify-content-center form-group">
+                        <button type="submit" class="form-outline col-12 btn btn-primary">Zaloguj</button>
+                        <div class="col-12 text-center mt-1">
+                            <small>Nie masz konta? <a href="/register">Zarejestruj się</a></small>
+                        </div>
                     </div>
                 </form>
+
             </div>
+        </div>
+    </div>
+    <div class="row w-100 d-flex justify-content-center align-items-center">
+        <div class="col-12 col-md-6 mt-5">
+            <img src="../images/dog-background.png" class="w-100" alt="Dog login form">
         </div>
     </div>
 </section>
