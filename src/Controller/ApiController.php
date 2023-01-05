@@ -99,7 +99,7 @@ class ApiController
         $dogFacts = [];
         for ($i = 0; $i < $numberOfFacts; $i++) {
             $dogFactResult = $this->callApi('facts');
-            if (!empty($dogFactResult)) {
+            if (!empty($dogFactResult['data']) && is_array($dogFactResult)) {
                 foreach ($dogFactResult['data'] as $dogFact) {
                     $dogFacts[] = [
                         'id' => $dogFact['id'],

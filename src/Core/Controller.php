@@ -11,7 +11,7 @@ class Controller
 
     protected View $view;
     protected ?Request $request;
-    protected array|false $config;
+    protected $config;
 
 
     public function __construct()

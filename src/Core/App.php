@@ -33,7 +33,6 @@ class App
 
     public function run(): void
     {
-        session_destroy();
         //Flash alerts, remove from session
         Session::delete('error');
         Session::delete('success');
