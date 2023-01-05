@@ -10,19 +10,16 @@ class HomeController extends Controller
     {
 //        $api = new ApiController('https://dog.ceo/api/');
         $api = new ApiController('https://dogapi.dog/api/v2/');
+//        $api = new ApiController('https://dog.ceo/api/');
         $dogFact = $api->getFactsAboutDogs(3);
 //        $api->storeFacts($facts);
 //        $api->getBreedList();
-//        $api->getBreedsImages();
+//      $api->getBreedsImages();
+
 
 
         $this->view->render('index', [
             'dogFact' => $dogFact
         ]);
-    }
-
-    public function ranking()
-    {
-        $this->view->render('ranking');
     }
 }

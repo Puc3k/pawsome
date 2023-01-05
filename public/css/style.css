@@ -24,6 +24,17 @@ main {
     background-position:center;
     min-height: calc(100vh - 143px);
 }
+.ranking {
+    background-image: url(../images/background.png);
+    image-orientation: from-image;
+    background-size: cover;
+    background-position:center;
+    min-height: calc(100vh - 143px);
+}
+.ranking-img {
+    width: 100px;
+    height:100px;
+}
 
 .dog-image {
     image-orientation: from-image;
@@ -56,3 +67,12 @@ main {
     background-position:top 81% left 50%;
     min-height: calc(100vh - 143px);
 }
+
+.glass-effect
+{
+    background: #ffffff33;
+    border-radius: 20px;
+    box-shadow: 0 4px 30px #0000001a;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    }

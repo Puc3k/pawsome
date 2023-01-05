@@ -4,6 +4,7 @@ namespace App\Core;
 
 use App\Controller\AuthController;
 use App\Controller\HomeController;
+use App\Controller\RankingController;
 use App\Controller\UserController;
 use App\Controller\QuizController;
 use App\Helpers\Session;
@@ -43,7 +44,9 @@ class App
         //Prosty routing - w zależności od url wywoływany jest odpowiedni kontroler i metoda
         match ($url[0]) {
             'home' => (new HomeController)->index(),
-            'ranking' => (new HomeController())->ranking(),
+            'ranking' => (new RankingController())->getQuizzesData(),
+            'ranking-user' => (new RankingController())->getQuizzesDataForUser(),
+            'ranking-admin' => (new RankingController())->getQuizzesDataForAdmin(),
             'quiz' => (new QuizController)->quiz(),
             'login' => (new AuthController)->login(),
             'register' => (new AuthController)->register(),
