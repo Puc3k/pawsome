@@ -21,9 +21,6 @@ class AuthController extends Controller
     {
         $this->checkIsUserLogged();
 
-        Session::delete('error');
-        Session::delete('success');
-
         if ($this->request->isPost()) {
 
             $validated = $this->validLoginData($this->request->getPost());
@@ -32,8 +29,7 @@ class AuthController extends Controller
 
             //redirect back to signup if there was any problem
             if (Session::exists('error')) {
-                //pass form data back to signup page
-                Session::put('error', 'Dane nie są poprawne');
+                //pass form data back to login page
                 $this->view->render('login', [
                     'email' => $validated['email'] ?? '',
                     'userName' => $validated['userName'] ?? ''
@@ -73,7 +69,6 @@ class AuthController extends Controller
     {
         $this->checkIsUserLogged();
 
-        Session::delete('error');
         if ($this->request->isPost()) {
 
             $validated = $this->validRegisterData($this->request->getPost());
@@ -81,10 +76,18 @@ class AuthController extends Controller
             //Check input values
             $this->checkIfRegisterErrors($validated);
 
+            //redirect back to register if there was any problem
+            if (Session::exists('error')) {
+                //pass form data back to login page
+                $this->view->render('register', [
+                    'email' => $validated['email'] ?? '',
+                    'userName' => $validated['userName'] ?? ''
+                ]);
+            }
             //Check if user exist
             $userExist = User::checkIfUserExist($validated['userName'], $validated['email']);
             if ($userExist) {
-                Session::put('error', 'Email już był wykorzystany do założenia konta');
+                Session::put('error', 'Ten adres e-mail jest już zajęty.');
             }
 
             //redirect back to signup if there was any problem

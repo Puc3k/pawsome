@@ -18,7 +18,7 @@ use App\Helpers\Auth;
         <div class="collapse navbar-collapse justify-content-md-end" id="navbarsExample05">
             <ul class="navbar-nav mb-2 mb-lg-0 mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php">Strona główna</a>
+                    <a class="nav-link active" aria-current="page" href="/">Strona główna</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/ranking">Statysyki</a>
