@@ -21,9 +21,4 @@ class HomeController extends Controller
             'dogFact' => $dogFact
         ]);
     }
-
-    public function ranking()
-    {
-        $this->view->render('ranking');
-    }
 }

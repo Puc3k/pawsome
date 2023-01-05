@@ -1,7 +1,7 @@
 <main>
     <div class="ranking">
         <div class="container">
-            <h1 class="text-center text-light py-4">Top 10 zdjęć psów</h1>
+            <h1 class="text-center text-light py-4">Twój ranking zdjęć psów</h1>
             <?php foreach ($params['rankingData'] ?? [] as $key => $value): ?>
                 <p class="lead">
                     <?="<strong>" . $key + 1 . ".</strong> {$value['fact']}" ?>

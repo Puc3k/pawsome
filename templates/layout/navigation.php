@@ -30,6 +30,7 @@ use App\Helpers\Auth;
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="#">Twój profil</a></li>
                             <li><a class="dropdown-item" href="#">Lista użytkowników</a></li>
+                            <li><a class="dropdown-item" href="/ranking-admin">Cały ranking</a></li>
                             <li><a class="dropdown-item" href="/logout">Wyloguj</a></li>
                         </ul>
                     </li>
@@ -39,6 +40,7 @@ use App\Helpers\Auth;
                                     class="bi bi-person-circle fs-4"></i></a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="#">Twój profil</a></li>
+                            <li><a class="dropdown-item" href="/ranking-user">Twój ranking</a></li>
                             <li><a class="dropdown-item" href="/logout">Wyloguj</a></li>
                         </ul>
                     </li>
