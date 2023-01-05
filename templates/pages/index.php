@@ -31,7 +31,7 @@
                 </p>
             </div>
             <div class="col-lg-5 dog-image-curiosity d-flex justify-content-center align-items-center">
-                <img src="../../images/ciekawostka.jpg" alt="Interesting fact about a dog" width="350" height="350">
+                <img src="../../images/dog-facts.jpg" alt="Interesting fact about a dog" height="350">
             </div>
         </div>
 

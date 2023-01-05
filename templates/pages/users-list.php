@@ -2,7 +2,7 @@
     <div class="ranking">
         <div class="container pb-3">
             <h1 class="text-center text-light py-4">Lista użytkowników</h1>
-            <table class="table table-light table-striped table-hover align-middle">
+            <table class="table table-light table-striped table-hover align-middle fs-5">
                 <thead>
                     <tr>
                         <th scope="col">Lp.</th>
