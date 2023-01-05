@@ -1,7 +1,7 @@
 <main>
     <div class="ranking">
         <div class="container pb-3">
-            <h1 class="text-center text-light py-4">Top 10 zdjęć psów</h1>
+            <h1 class="text-center text-light py-4">Ranking zdjęć psów</h1>
             <?php foreach ($params['rankingData'] ?? [] as $key => $value): ?>
                 <div class="row my-2 glass-effect">
                     <div class="col-lg-1 text-center my-auto">
@@ -24,6 +24,5 @@
                     </div>
                 </div>
             <?php endforeach; ?>
-            
         </div>
 </main>
