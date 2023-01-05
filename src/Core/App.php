@@ -44,9 +44,9 @@ class App
         //Prosty routing - w zależności od url wywoływany jest odpowiedni kontroler i metoda
         match ($url[0]) {
             'home' => (new HomeController)->index(),
-            'ranking' => (new RankingController())->ranking(),
-            'ranking-user' => (new RankingController())->ranking_user(),
-            'ranking-admin' => (new RankingController())->ranking_admin(),
+            'ranking' => (new RankingController())->getQuizzesData(),
+            'ranking-user' => (new RankingController())->getQuizzesDataForUser(),
+            'ranking-admin' => (new RankingController())->getQuizzesDataForAdmin(),
             'quiz' => (new QuizController)->quiz(),
             'login' => (new AuthController)->login(),
             'register' => (new AuthController)->register(),
