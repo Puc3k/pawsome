@@ -28,7 +28,7 @@ use App\Helpers\Auth;
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"><i
                                     class="bi bi-person-circle fs-4"></i></a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Twój profil</a></li>
+                            <li><a class="dropdown-item" href="/user-profile">Twój profil</a></li>
                             <li><a class="dropdown-item" href="#">Lista użytkowników</a></li>
                             <li><a class="dropdown-item" href="/ranking-admin">Cały ranking</a></li>
                             <li><a class="dropdown-item" href="/logout">Wyloguj</a></li>

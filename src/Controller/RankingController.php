@@ -81,6 +81,7 @@ class RankingController extends Controller
                 $this->view->render('ranking-user', ['rankingData' => $rankingData]);    
         }
         Session::put('error', 'Brak identyfikatora użytkownika');
+        $this->view->render('index');
     }
 
     public function getQuizzesDataForAdmin(): void
