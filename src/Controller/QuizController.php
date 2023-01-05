@@ -187,8 +187,7 @@ class QuizController extends Controller
                 'userId' => User::gerUserIdFromSession() ?? NULL,
                 'winnerId' => $winner['id']
             ]);
-        } catch (Throwable $e) {
-            var_dump($e);
+        } catch (Throwable) {
             Session::put('error', 'Błąd podczas zapisu do bazy danych.');
             $this->view->render('index');
         }

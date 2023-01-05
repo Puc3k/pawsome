@@ -43,7 +43,6 @@ class AuthController extends Controller
             try {
                 $user = User::getUser($validated);
                 if (!$user) {
-                    var_dump($user);
                     Session::put('error', 'Nie znaleziono takiego użytkownika lub podane dane są błędne');
                     $this->view->render('login', [
                         'email' => $validated['email'] ?? '',
@@ -60,8 +59,7 @@ class AuthController extends Controller
                     Session::put('logged', true);
                     $this->redirect('/home');
                 }
-            } catch (Throwable $e) {
-                var_dump($e);
+            } catch (Throwable) {
                 Session::put('error', 'Błąd podczas tworzenia użytkownika. Spróbuj ponownie');
 
             }
