@@ -184,7 +184,7 @@ class QuizController extends Controller
             $db = Database::getInstance()->getConnection();
             $query = $db->prepare('INSERT INTO quizzes (user_id, winner_id) VALUES (:userId, :winnerId)');
             $query->execute([
-                'userId' => User::gerUserIdFromSession() ?? 0,
+                'userId' => User::getUserIdFromSession() ?? 0,
                 'winnerId' => $winner['id']
             ]);
         } catch (Throwable) {

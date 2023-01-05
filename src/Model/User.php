@@ -42,7 +42,7 @@ class User
         return false;
     }
 
-    public static function gerUserIdFromSession()
+    public static function getUserIdFromSession()
     {
         $isUserLogged = Auth::isUserLogged();
         if (!$isUserLogged || !Session::exists('user-id')) {
@@ -50,5 +50,25 @@ class User
         }
 
         return Session::get('user-id');
+    }
+    public static function getAllUsers(): array
+    {
+        $db = Database::getInstance()->getConnection();
+        $query = $db->prepare('SELECT * FROM users');
+        $query->execute();
+        $usersList = $query->fetchAll();
+        $users = [];
+        foreach ($usersList as $user) {
+            $users[] = [
+                'username' => $user['username'],
+                //Pass username to view
+                'email' => $user['email'],
+                //Pass email to view
+                'avatar' => $user['avatar'],
+                //Pass avatar to view
+                'role' => $user['role'] //Pass role to view
+            ];
+        }
+        return $users;
     }
 }
