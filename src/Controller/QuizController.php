@@ -16,76 +16,80 @@ class QuizController extends Controller
     public function quiz()
     {
         Session::init();
+        $viewData = [];
+        $roundImages = [];
+        $images = Session::get('quiz-images');
         $round = Session::exists('quiz-round') ? Session::get('quiz-round') : 1;
-        
+        if (!$images && ($round == 1 && !Session::exists('round-dog-img'))) {
+            $images = $this->startQuiz();
+            $roundImages = $this->generateRound($images);
+
+        }
+
         $checkIsAnswer = $this->request->postParam('round-dog-img'); //User POST send id, battle winner
 
         //If user send POST
-        if (!empty($checkIsAnswer) && $this->request->isPost()) {
+        if (!empty($checkIsAnswer)) {
             $quizImages = $this->handleUserAnswer($checkIsAnswer);
             if (!$quizImages) {
-
                 $this->view->render('index');
             }
-
-            $isWinner = $this->isWinner($quizImages); //Check if is a winner - true/false
-
-            if ($isWinner) {
-                $viewData = [
-                    'winner' => $this->getWinner($quizImages) //Pass winner to view
-                ];
-
-                $this->saveQuiz($quizImages, $viewData['winner']);
-                Session::destroy(); //End current quiz, clear session data
-                $this->view->render('quiz', $viewData);
-            }
-
             $round++;
+            Session::put('quiz-round', $round);
             Session::put('quiz-images', $quizImages);
+            $images = Session::get('quiz-images');
         }
 
-        //Quiz init
-        if ($round == 1 && !Session::exists('round-dog-img')) {
-            try {
-                $images = $this->generateQuizImages();
-                if ($images) {
-                    Session::put('quiz-images', $images);
-                }
-
-            } catch (Throwable) {
-                Session::put('error', 'Błąd podczas łączenia z bazą danych!');
-                $this->view->render('index');
-            }
-        }
-
-        $viewData = [];
-        $images = Session::get('quiz-images');
-
-        if ($images) {
-            $roundImages = $this->generateRound($images);
-
-            if (!$roundImages) {
-                Session::put('error', 'Błąd podczas generowania Quizu, spróbuj ponownie.');
-                $this->view->render('index');
-            }
-
-            if (count($roundImages) > 1) {
-                Session::put('round-dog-img', [$roundImages[0]['id'], $roundImages[1]['id']]);
-            }
-
-            $viewData += [
-                'img1' => $roundImages[0] ?? '',
-                'img2' => $roundImages[1] ?? ''
+        //check if winner
+        $isWinner = $this->isWinner($images); //Check if is a winner - true/false
+        if ($isWinner) {
+            $viewData = [
+                'winner' => $this->getWinner($images) //Pass winner to view
             ];
+            $this->saveQuiz($images, $viewData['winner']);
+
+            Session::delete('quiz-round'); //End current quiz, clear session data
+            Session::delete('round-dog-img'); //End current quiz, clear session data
+            Session::delete('quiz-images'); //End current quiz, clear session data
+
+            $this->view->render('quiz', $viewData);
         }
 
-        Session::put('quiz-round', $round);
+
+        if (!$roundImages) {
+            $roundImages = $this->generateRound($images);
+        }
+
+        if (count($roundImages) > 1) {
+            Session::put('round-dog-img', [$roundImages[0]['id'], $roundImages[1]['id']]);
+        } else {
+            Session::put('error', 'Błąd podczas generowania Quizu, spróbuj ponownie.');
+            $this->view->render('index');
+        }
 
         $viewData += [
+            'img1' => $roundImages[0] ?? '',
+            'img2' => $roundImages[1] ?? '',
             'round' => $round
         ];
 
         $this->view->render('quiz', $viewData);
+    }
+
+    private function startQuiz(): array
+    {
+        try {
+            $images = $this->generateQuizImages();
+            if ($images) {
+                Session::put('quiz-images', $images);
+                return $images;
+            }
+
+        } catch (Throwable) {
+            Session::put('error', 'Błąd podczas łączenia z bazą danych!');
+            $this->view->render('index');
+        }
+        return [];
     }
 
     private function generateQuizImages(): array
@@ -110,18 +114,22 @@ class QuizController extends Controller
                 if ($data['status'] == 1) {
                     return $data;
                 }
+                return [];
             });
+
             return array_slice($newData, 0, 2);
         }
         return false;
     }
 
-    private function isWinner(array $data): bool
+    private function isWinner($data): bool
     {
         $winner = false;
-        $countStatus = array_count_values(array_column($data, 'status'));
-        if ($countStatus[1] == 1) {
-            $winner = true;
+        if (is_array($data)) {
+            $countStatus = array_count_values(array_column($data, 'status'));
+            if ($countStatus[1] == 1) {
+                $winner = true;
+            }
         }
         return $winner;
 
@@ -145,13 +153,17 @@ class QuizController extends Controller
         $quizImages = Session::get('quiz-images'); //All current quiz images
         $battleImages = Session::get('round-dog-img'); //Two images from battle A vs B
         //If $battleImages is NULL - data in session empty
+
         if (is_null($battleImages)) {
             return false;
         }
 
         $winnerImage = array_search($answer, $battleImages); //Winner image
+
         unset($battleImages[$winnerImage]); //Remove winner image from battle array
+
         $rejectedImage = reset($battleImages); //Get key of rejected image
+
         //Set rejected image status to 0
         return $this->changeStatus($quizImages, $rejectedImage);
     }
