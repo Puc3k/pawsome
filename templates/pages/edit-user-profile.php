@@ -1,5 +1,5 @@
-<section class="container-fluid form-container">
-    <div class="row form-container">
+<section class="container-fluid">
+    <div class="row form-container profile-background">
         <div class="col-12 col-md-6 offset-md-3 d-flex justify-content-center align-items-center">
             <div class="card my-3">
                 <h5 class="card-header"><?= $params['user']['username'] ?></h5>
@@ -31,9 +31,9 @@
                                     value="<?= $params['user']['username'] ?>"
                             />
                         </div>
-                        <div class="form-group mt-4">
-                            <button type="submit" class="btn btn-primary">Zapisz dane</button>
-                            <a href="/user-profile" class="btn btn-secondary">Anuluj</a>
+                        <div class="col-12 form-group mt-4 d-inline-flex">
+                            <button type="submit" class="btn button-color col-12 col-md-6 me-1">Zapisz dane</button>
+                            <a href="/user-profile" class="btn btn-secondary col-12 col-md-6">Anuluj</a>
                         </div>
                     </form>
                 </div>

@@ -53,10 +53,13 @@ class UserController extends Controller
             if (is_uploaded_file($_FILES['avatar']['tmp_name'])) {
                 $avatar = $this->checkAvatar($_FILES['avatar']);
             }
-
             if (!$validated['userName']) {
                 Session::put('error', 'Podaj nazwę użytkownika');
             }
+            //Todo sprawdzić czy nazwa usera nie jset już zajęta,
+            // buttony bootstrap zielony na inny i zmienić w edycji usera,
+            // wyjebać hieny itp
+            // admin przycisk seedowania bazy z api
 
             if (Session::exists('error')) {
                 //pass form data back to login page
@@ -79,7 +82,7 @@ class UserController extends Controller
                 $this->view->render('register');
             }
 
-            Session::put('success', 'Zarejestrowano pomyślnie. Zaloguj się');
+            Session::put('success', 'Profil został pomyślnie zaktualizowany');
             $this->redirect('/user-profile');
 
         }

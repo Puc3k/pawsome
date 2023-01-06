@@ -1,5 +1,5 @@
-<section class="container-fluid form-container">
-    <div class="row form-container">
+<section class="container-fluid">
+    <div class="row form-container profile-background">
         <div class="col-12 col-md-6 offset-md-3 d-flex justify-content-center align-items-center">
             <div class="card mt-3">
                 <h5 class="card-header"><?= $params['user']['username'] ?></h5>
@@ -18,7 +18,7 @@
                         <li>Email: <?= $params['user']['email'] ?></li>
                         <li>Rola: <?= $params['user']['role'] ?></li>
                     </ul>
-                    <a href="/edit-user-profile" class="btn btn-warning">Edytuj dane</a>
+                    <a href="/edit-user-profile" class="btn button-color w-100">Edytuj dane</a>
                 </div>
             </div>
         </div>

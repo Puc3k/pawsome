@@ -88,6 +88,24 @@ main {
     max-width: 100%;
 }
 
+.button-color{
+    background-color: #ECA869 !important;
+    color: #f0f0f0 !important;
+}
+
+.button-color:hover{
+    background-color: rgba(236, 168, 105, 0.8) !important;
+
+}
+
+.profile-background{
+    background-image: url(../images/dog-profile-background.jpg);
+    image-orientation: from-image;
+    background-size: cover;
+    background-position: center;
+    min-height: calc(100vh - 143px);
+}
+
 @media only screen and (max-width: 426px) {
     .max-w-100 {
         height: auto;

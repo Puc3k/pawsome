@@ -5,7 +5,7 @@
             <h1 class="text-light">Najlepsze zdjęcie psa</h1>
             <p class="text-light col-12 col-md-6">Gra z wybieraniem najlepszego zdjęcia psa to zabawna i wciągająca gra,
                 w której gracze wybierają jedno z dwóch dostępnych zdjęć psów. Zwyciężca </p>
-            <p><a class="btn btn-lg btn-light" href="/quiz">Graj teraz</a></p>
+            <p class="d-flex justify-content-center align-items-center col-5"><a class="btn btn-lg button-color text-center col-12 col-md-6 col-lg-4" href="/quiz">Graj teraz</a></p>
         </div>
     </div>
 
