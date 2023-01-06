@@ -4,9 +4,8 @@
             <?php if (empty($params['winner'])) : ?>
                 <h1 class="text-center text-light pt-4">Wybierz jedno zdjęcie</h1>
                 <h3 class="text-center text-light mt-2"><?= $params['round'] ?? 0 ?>/16</h3>
+                <form method="POST" id="dog-form">
                 <div class="row">
-
-                    <form method="POST" id="dog-form" class="d-flex">
                         <div class="col-lg-5">
                             <div class="card shadow-sm m-1">
                                 <input type="radio" name="round-dog-img" id="img1"
@@ -42,8 +41,7 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
+                </div></form>
             <?php else : ?>
                 <h1 class="text-center text-light pt-4">Twój wybór to:</h1>
                 <div class="row justify-content-center">

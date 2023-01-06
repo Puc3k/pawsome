@@ -54,6 +54,10 @@ class UserController extends Controller
                 $avatar = $this->checkAvatar($_FILES['avatar']);
             }
 
+            if (User::checkIfUserExistForUserName($validated['userName'])) {
+                Session::put('error', 'Nazwa użytkownika zajęta');
+            }
+
             if (!$validated['userName']) {
                 Session::put('error', 'Podaj nazwę użytkownika');
             }
