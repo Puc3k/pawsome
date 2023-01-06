@@ -7,11 +7,9 @@ use JetBrains\PhpStorm\NoReturn;
 
 class Controller
 {
-    protected const SESSION_LOGGED_USER = 'user'; //sesja jeśli user zalogowany
-
     protected View $view;
     protected ?Request $request;
-    protected $config;
+    protected array|false $config;
 
 
     public function __construct()

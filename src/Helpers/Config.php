@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 class Config
 {
-    public static function getConfig()
+    public static function getConfig(): bool|array
     {
         $config = dirname(__DIR__, 2) . '/config/config.ini';
 

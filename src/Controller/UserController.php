@@ -61,9 +61,6 @@ class UserController extends Controller
             if (!$validated['userName']) {
                 Session::put('error', 'Podaj nazwę użytkownika');
             }
-            //Todo sprawdzić czy nazwa usera nie jset już zajęta,
-            // wyjebać hieny itp
-            // admin przycisk seedowania bazy z api
 
             if (Session::exists('error')) {
                 //pass form data back to login page

@@ -46,7 +46,7 @@ class QuizController extends Controller
             $viewData = [
                 'winner' => $this->getWinner($images) //Pass winner to view
             ];
-            $this->saveQuiz($images, $viewData['winner']);
+            $this->saveQuiz($viewData['winner']);
 
             Session::delete('quiz-round'); //End current quiz, clear session data
             Session::delete('round-dog-img'); //End current quiz, clear session data
@@ -178,7 +178,7 @@ class QuizController extends Controller
         return $data;
     }
 
-    private function saveQuiz(array $answers, array $winner): void
+    private function saveQuiz(array $winner): void
     {
         try {
             $db = Database::getInstance()->getConnection();
