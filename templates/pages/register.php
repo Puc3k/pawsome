@@ -9,31 +9,26 @@
                         <label for="userName" class="form-label">Nazwa użytkownika</label>
                         <input type="text" name="userName" class="form-control"
                                value="<?= $params['userName'] ?? '' ?>"
-                               placeholder="Podaj nazwę użytkownika">
+                               placeholder="Podaj nazwę użytkownika" id="userName">
 
                     </div>
                     <div class="mb-3 form-group">
-                        <label for="exampleInputEmail1" class="form-label">Podaj adres email</label>
+                        <label for="email" class="form-label">Podaj adres email</label>
                         <input type="text" class="form-control" name="email" value="<?= $params['email'] ?? '' ?>"
-                               placeholder="Podaj email">
+                               placeholder="Podaj email" id="email">
 
                     </div>
                     <div class="mb-3 form-group">
-                        <label for="exampleInputPassword1" class="form-label">Hasło</label>
-                        <input type="password" name="createPassword" class="form-control" id="exampleInputPassword1"
+                        <label for="createPassword" class="form-label">Hasło</label>
+                        <input type="password" name="createPassword" class="form-control" id="createPassword"
                                value="" placeholder="Podaj hasło">
                     </div>
                     <div class="mb-3 form-group">
-                        <label for="exampleInputPassword1" class="form-label">Powtórz hasło</label>
+                        <label for="confirmPassword" class="form-label">Powtórz hasło</label>
                         <input type="password" name="confirmPassword" class="form-control"
-                               id="exampleInputPassword1" value=""
+                               id="confirmPassword" value=""
                                placeholder="Potwierdź hasło">
                     </div>
-                    <!--                        <div class="mb-4 form-group">-->
-                    <!--                            <label for="avatar" class="form-label">Zdjęcie profilowe</label>-->
-                    <!--                            <input type="file" name="avatar" id="avatar">-->
-                    <!--                        </div>-->
-
                     <div class="justify-content-center form-group">
                         <button type="submit" class="form-outline col-12 btn btn-primary">Zarejestruj się</button>
                         <div class="col-12 text-center mt-1">
