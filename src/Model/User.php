@@ -23,6 +23,19 @@ class User
         return $query->rowCount() > 0;
     }
 
+    public static function checkIfUserExistForUserName(string $userName): bool
+    {
+        //check if userName or email already exist
+        $db = Database::getInstance()->getConnection();
+        //param binding
+        $query = $db->prepare('SELECT * FROM users WHERE username=:username');
+        $query->execute([
+            'username' => $userName,
+        ]);
+
+        return $query->rowCount() > 0;
+    }
+
     public static function getUser(array $data): bool|array
     {
         $db = Database::getInstance()->getConnection();
