@@ -19,7 +19,7 @@ main {
 }
 
 .quiz-index {
-    background-image: url(../images/background.png);
+    background-image: url(/public/images/background.png);
     image-orientation: from-image;
     background-size: cover;
     background-position: center;
@@ -27,7 +27,7 @@ main {
 }
 
 .quiz {
-    background-image: url(../images/background.png);
+    background-image: url(/public/images/background.png);
     image-orientation: from-image;
     background-size: cover;
     background-position: center;
@@ -35,7 +35,7 @@ main {
 }
 
 .ranking {
-    background-image: url(../images/background.png);
+    background-image: url(/public/images/background.png);
     image-orientation: from-image;
     background-size: cover;
     background-position: center;
@@ -118,7 +118,7 @@ main {
 }
 
 .profile-background {
-    background-image: url(../images/dog-profile-background.jpg);
+    background-image: url(/public/images/dog-profile-background.jpg);
     image-orientation: from-image;
     background-size: cover;
     background-position: center;

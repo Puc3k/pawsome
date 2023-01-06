@@ -31,7 +31,7 @@
                 </p>
             </div>
             <div class="col-12 col-lg-4 dog-image-curiosity d-flex justify-content-center align-items-center">
-            <div class="dog-image w-75 h-75" style="background-image: url(../../images/dog-facts.jpg)"></div>
+            <div class="dog-image w-75 h-75" style="background-image: url(/public/images/dog-facts.jpg)"></div>
             </div>
         </div>
 

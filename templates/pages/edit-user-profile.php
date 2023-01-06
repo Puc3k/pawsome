@@ -6,12 +6,12 @@
                 <div class="card-body">
                     <form method="post" enctype="multipart/form-data">
                         <?php if (isset($params['user']['avatar']) && strlen($params['user']['avatar']) > 0) : ?>
-                            <img src="../images/user-profile/<?= $params['user']['avatar'] ?>"
+                            <img src="/public/images/user-profile/<?= $params['user']['avatar'] ?>"
                                  class="rounded rounded-circle mx-auto d-block p-4 max-w-100"
                                  width="360"
                                  height="360" alt="User avatar">
                         <?php else : ?>
-                            <img src="../images/dog-avatar.jpg"
+                            <img src="/public/images/dog-avatar.jpg"
                                  class="rounded rounded-circle mx-auto d-block p-4 max-w-100"
                                  width="360"
                                  height="360" alt="<?= $params['user']['username'] ?> User avatar placeholder">

@@ -5,11 +5,11 @@
                 <h5 class="card-header"><?= $params['user']['username'] ?></h5>
                 <div class="card-body">
                     <?php if (isset($params['user']['avatar']) && strlen($params['user']['avatar']) > 0) : ?>
-                        <img src="../images/user-profile/<?= $params['user']['avatar'] ?>" class="rounded rounded-circle mx-auto d-block p-4 max-w-100"
+                        <img src="/public/images/user-profile/<?= $params['user']['avatar'] ?>" class="rounded rounded-circle mx-auto d-block p-4 max-w-100"
                              width="360"
                              height="360" alt="User avatar placeholder">
                     <?php else : ?>
-                        <img src="../images/dog-avatar.jpg" class="rounded rounded-circle mx-auto d-block p-4 max-w-100"
+                        <img src="/public/images/dog-avatar.jpg" class="rounded rounded-circle mx-auto d-block p-4 max-w-100"
                              width="360"
                              height="360" alt="User avatar placeholder">
                     <?php endif; ?>
