@@ -17,7 +17,7 @@
                     </div>
 
                     <div class="justify-content-center form-group">
-                        <button type="submit" class="form-outline col-12 btn btn-primary">Zaloguj</button>
+                        <button type="submit" class="form-outline col-12 btn button-color">Zaloguj</button>
                         <div class="col-12 text-center mt-1">
                             <small>Nie masz konta? <a href="/register">Zarejestruj się</a></small>
                         </div>
