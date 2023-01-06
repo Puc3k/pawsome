@@ -1,6 +1,7 @@
 <?php
 
 use App\Helpers\Auth;
+use App\Helpers\Session;
 
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center py-2 py-lg-3">
@@ -16,17 +17,23 @@ use App\Helpers\Auth;
         </button>
 
         <div class="collapse navbar-collapse justify-content-md-end" id="navbarsExample05">
-            <ul class="navbar-nav mb-2 mb-lg-0 mr-auto">
-                <li class="nav-item">
+            <ul class="navbar-nav mb-2 mb-lg-0 mr-auto align-content-md-center">
+                <li class="nav-item d-md-flex align-items-md-center">
                     <a class="nav-link active" aria-current="page" href="/">Strona główna</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item d-md-flex align-items-md-center">
                     <a class="nav-link" href="/ranking">Ranking</a>
                 </li>
                 <?php if (Auth::admin()): ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"><i
-                                    class="bi bi-person-circle fs-4"></i></a>
+                    <li class="nav-item dropdown d-md-flex align-items-md-center">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <?php if (Session::exists('avatar')) : ?>
+                                <img src="../images/user-profile/<?= Session::get('avatar') ?>" class="rounded-circle"
+                                     alt="User Avatar" width="35" height="35">
+                            <?php else : ?>
+                                <i class="bi bi-person-circle fs-4"></i>
+                            <?php endif; ?>
+                        </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="/user-profile">Twój profil</a></li>
                             <li><a class="dropdown-item" href="/users-list">Lista użytkowników</a></li>
@@ -36,19 +43,25 @@ use App\Helpers\Auth;
                     </li>
                 <?php elseif (Auth::user()): ?>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"><i
-                                    class="bi bi-person-circle fs-4"></i></a>
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <?php if (Session::exists('avatar')) : ?>
+                                <img src="../images/user-profile/<?= Session::get('avatar') ?>" class="rounded-circle"
+                                     alt="User Avatar" width="35" height="35">
+                            <?php else : ?>
+                                <i class="bi bi-person-circle fs-4"></i>
+                            <?php endif; ?>
+                        </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Twój profil</a></li>
+                            <li><a class="dropdown-item" href="/user-profile">Twój profil</a></li>
                             <li><a class="dropdown-item" href="/ranking-user">Twój ranking</a></li>
                             <li><a class="dropdown-item" href="/logout">Wyloguj</a></li>
                         </ul>
                     </li>
                 <?php elseif (Auth::guest()): ?>
-                    <li class="nav-item">
+                    <li class="nav-item d-md-flex align-items-md-center">
                         <a class="nav-link" href="/login">Zaloguj</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item d-md-flex align-items-md-center">
                         <a class="nav-link" href="/register">Zarejestruj</a>
                     </li>
                 <?php endif; ?>

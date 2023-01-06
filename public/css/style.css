@@ -21,24 +21,26 @@ main {
     background-image: url(../images/background.png);
     image-orientation: from-image;
     background-size: cover;
-    background-position:center;
+    background-position: center;
     min-height: calc(100vh - 143px);
 }
+
 .ranking {
     background-image: url(../images/background.png);
     image-orientation: from-image;
     background-size: cover;
-    background-position:center;
+    background-position: center;
     min-height: calc(100vh - 143px);
 }
-.avatar-img
-{
+
+.avatar-img {
     width: 75px;
-    height:75px;
+    height: 75px;
     image-orientation: from-image;
     background-size: cover;
     background-position: center;
-    }
+}
+
 .ranking-img {
     width: 200px;
     height:200px;
@@ -49,13 +51,14 @@ main {
     background-size: cover;
     background-position: center;
 }
-.dog-input{
+
+.dog-input {
     outline: 1rem solid transparent;
     transition: outline-color .2s ease-in-out;
 
 }
-.dog-input:hover
-{
+
+.dog-input:hover {
     outline-color: rgba(171, 160, 87, 0.5);
     cursor: pointer;
 }
@@ -68,16 +71,25 @@ main {
     height: 400px;
 }
 
-.form-container{
+.form-container {
     background-color: #f0f0f0;
     min-height: calc(100vh - 143px);
 }
 
-.glass-effect
-{
+.glass-effect {
     background: #ffffff33;
     border-radius: 20px;
     box-shadow: 0 4px 30px #0000001a;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+}
+
+.max-w-100 {
+    max-width: 100%;
+}
+
+@media only screen and (max-width: 426px) {
+    .max-w-100 {
+        height: auto;
+    }
 }

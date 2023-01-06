@@ -5,15 +5,15 @@
                 <h4>Logowanie</h4>
                 <form method="POST">
                     <div class="mb-4 form-group">
-                        <label for="exampleInputEmail1" class="form-label">Adres email</label>
+                        <label for="email" class="form-label">Adres email</label>
                         <input type="text" class="form-control" name="email" value="<?= $params['email'] ?? '' ?>"
-                               placeholder="Podaj email">
+                               placeholder="Podaj email" id="email">
 
                     </div>
                     <div class="mb-4 form-group">
-                        <label for="exampleInputPassword1" class="form-label">Hasło</label>
+                        <label for="password" class="form-label">Hasło</label>
                         <input type="password" class="form-control" name="password"
-                               value="" placeholder="Wpisz hasło">
+                               value="" placeholder="Wpisz hasło" id="password">
                     </div>
 
                     <div class="justify-content-center form-group">
