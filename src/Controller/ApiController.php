@@ -50,7 +50,6 @@ class ApiController
                     if (is_array($subBreed) && count($subBreed) > 0) {
                         foreach ($subBreed as $singleSubBreed) {
                             //Check if breed and sub_breed exist in db
-                            $db = Database::getInstance()->getConnection();
                             $query = $db->prepare('SELECT * FROM breed_list WHERE breed = :breed AND sub_breed = :subBreed');
                             $query->execute([
                                 'breed' => $breed,
@@ -94,7 +93,6 @@ class ApiController
         $breeds = $query->fetchAll();
         $insertsCount = 0;
         if (is_array($breeds) && count($breeds) > 0) {
-            $inserts = [];
             foreach ($breeds as $breed) {
                 if (!empty($breed['sub_breed'])) {
                     $apiQuery = "breed/{$breed['sub_breed']}/images";

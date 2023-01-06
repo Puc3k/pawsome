@@ -7,10 +7,10 @@ use App\Helpers\Session;
 <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center py-2 py-lg-3">
     <div class="container-fluid position-relative bg-light">
         <a class="navbar-brand d-inline" href="/">
-            <img src="../../images/logo.png" class="mx-2 mb-2" width="32" height="32">
+            <img src="../../images/logo.png" class="mx-2 mb-2" width="32" height="32" alt="Pawsome logo">
             <span class="fs-4 bold">Pawsome</span>
         </a>
-        <button class="navbar-toggler" class="py-0 px-0" type="button" data-bs-toggle="collapse"
+        <button class="navbar-toggler py-0 px-0" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false"
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

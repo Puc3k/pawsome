@@ -2,11 +2,11 @@
 
 namespace App\Core;
 
-use App\Helpers\Session;
+use JetBrains\PhpStorm\NoReturn;
 
 class View
 {
-    public function render(string $page, array $params = []): void
+    #[NoReturn] public function render(string $page, array $params = []): void
     {
         $params = $this->escape($params);
         include_once("../templates/layout/layout.php");

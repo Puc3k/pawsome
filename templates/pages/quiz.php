@@ -14,7 +14,7 @@
                                 <label for="img1">
                                     <img class="dog-image w-100 dog-input" src="<?= $params['img1']['image'] ?? '' ?>"
                                          width="500"
-                                         height="500">
+                                         height="500" alt="Image dog 1">
                                 </label>
                                 <div class="card-body">
                                     <p class="card-text text-center">Zdjęcie #1</p>
@@ -33,7 +33,7 @@
                                 <label for="img2">
                                     <img class="dog-image w-100 dog-input" src="<?= $params['img2']['image'] ?? '' ?>"
                                          width="500"
-                                         height="500">
+                                         height="500" alt="Image dog 2">
                                 </label>
 
                                 <div class="card-body">

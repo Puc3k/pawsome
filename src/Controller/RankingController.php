@@ -10,18 +10,6 @@ use App\Model\User;
 
 class RankingController extends Controller
 {
-    public function ranking()
-    {
-        $this->view->render('ranking');
-    }
-    public function ranking_user()
-    {
-        $this->view->render('ranking-user');
-    }
-    public function ranking_admin()
-    {
-        $this->view->render('ranking-admin');
-    }
     public function getCountQuizzes(): int
     {
         $db = Database::getInstance()->getConnection();
