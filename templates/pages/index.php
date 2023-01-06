@@ -17,7 +17,7 @@
         </div>
 
         <div class="row border-bottom">
-            <div class="col-lg-7">
+            <div class="col-12 col-lg-8">
                 <h2 class="fw-normal lh-1 mt-4">Ciekawostki</h2>
                 <?php foreach ($params['dogFact'] ?? [] as $key => $value) : ?>
                     <p class="lead">
@@ -30,8 +30,8 @@
                     <?php endif; ?>
                 </p>
             </div>
-            <div class="col-lg-5 dog-image-curiosity d-flex justify-content-center align-items-center">
-                <img src="../../images/dog-facts.jpg" alt="Interesting fact about a dog" height="350">
+            <div class="col-12 col-lg-4 dog-image-curiosity d-flex justify-content-center align-items-center">
+            <div class="dog-image w-75 h-75" style="background-image: url(../../images/dog-facts.jpg)"></div>
             </div>
         </div>
 
