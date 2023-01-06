@@ -1,3 +1,12 @@
+:root {
+    --button-font-color: #f0f0f0;
+    --button-color: #ECA869;
+    --button-color-hover: rgba(236, 168, 105, 0.8);
+    --button-color-green: #7bd567;
+    --button-color-green-hover: rgba(123, 213, 103, 0.8);
+
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -43,7 +52,7 @@ main {
 
 .ranking-img {
     width: 200px;
-    height:200px;
+    height: 200px;
 }
 
 .dog-image {
@@ -86,6 +95,34 @@ main {
 
 .max-w-100 {
     max-width: 100%;
+}
+
+.button-color {
+    background-color: var(--button-color) !important;
+    color: var(--button-font-color) !important;
+}
+
+.button-color:hover {
+    background-color: var(--button-color-hover) !important;
+
+}
+
+.button-color-green {
+    background-color: var(--button-color-green) !important;
+    color: var(--button-font-color) !important;
+}
+
+.button-color-green:hover {
+    background-color: var(--button-color-green-hover) !important;
+
+}
+
+.profile-background {
+    background-image: url(../images/dog-profile-background.jpg);
+    image-orientation: from-image;
+    background-size: cover;
+    background-position: center;
+    min-height: calc(100vh - 143px);
 }
 
 @media only screen and (max-width: 426px) {

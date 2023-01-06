@@ -11,3 +11,16 @@
         <?= Session::get('success') ?>
     </div>
 <?php endif; ?>
+
+<?php if (Session::exists('breed-seed')) : ?>
+    <div class="alert alert-success" role="alert">
+        <?= Session::get('breed-seed') ?>
+    </div>
+<?php endif; ?>
+
+
+<?php if (Session::exists('image-seed')) : ?>
+    <div class="alert alert-success" role="alert">
+        <?= Session::get('image-seed') ?>
+    </div>
+<?php endif; ?>

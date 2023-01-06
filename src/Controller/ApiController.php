@@ -38,36 +38,61 @@ class ApiController
         return json_decode($curlData, true) ?? [];
     }
 
-    public function getBreedList(): void
+    public function getBreedList(): int
     {
         $breedList = $this->callApi('breeds/list/all');
+        $insert = 0;
+        $notWanted = ['dhole', 'african'];
         if (!empty($breedList) && $breedList['status'] == 'success') {
             $db = Database::getInstance()->getConnection();
             foreach ($breedList['message'] as $breed => $subBreed) {
-                if (is_array($subBreed) && count($subBreed) > 0) {
-                    foreach ($subBreed as $singleSubBreed) {
-                        $query = $db->prepare('INSERT INTO breed_list (breed, sub_breed) VALUES (:breed, :subBreed)');
+                if (!in_array($breed, $notWanted)) {
+                    if (is_array($subBreed) && count($subBreed) > 0) {
+                        foreach ($subBreed as $singleSubBreed) {
+                            //Check if breed and sub_breed exist in db
+                            $db = Database::getInstance()->getConnection();
+                            $query = $db->prepare('SELECT * FROM breed_list WHERE breed = :breed AND sub_breed = :subBreed');
+                            $query->execute([
+                                'breed' => $breed,
+                                'subBreed' => $singleSubBreed
+                            ]);
+                            //If no insert new breed
+                            if ($query->rowCount() == 0) {
+                                $query = $db->prepare('INSERT INTO breed_list (breed, sub_breed) VALUES (:breed, :subBreed)');
+                                $query->execute([
+                                    'breed' => $breed,
+                                    'subBreed' => $singleSubBreed
+                                ]);
+                                $insert++;
+                            }
+                        }
+                    } else {
+                        $db = Database::getInstance()->getConnection();
+                        $query = $db->prepare('SELECT * FROM breed_list WHERE breed = :breed');
                         $query->execute([
                             'breed' => $breed,
-                            'subBreed' => $singleSubBreed
                         ]);
+                        if ($query->rowCount() == 0) {
+                            $query = $db->prepare('INSERT INTO breed_list (breed) VALUES (:breed)');
+                            $query->execute([
+                                'breed' => $breed
+                            ]);
+                            $insert++;
+                        }
                     }
-                } else {
-                    $query = $db->prepare('INSERT INTO breed_list (breed) VALUES (:breed)');
-                    $query->execute([
-                        'breed' => $breed
-                    ]);
                 }
             }
         }
+        return $insert;
     }
 
-    public function getBreedsImages(): void
+    public function getBreedsImages(): int
     {
         $db = Database::getInstance()->getConnection();
         $query = $db->prepare('SELECT * FROM breed_list');
         $query->execute();
         $breeds = $query->fetchAll();
+        $insertsCount = 0;
         if (is_array($breeds) && count($breeds) > 0) {
             $inserts = [];
             foreach ($breeds as $breed) {
@@ -80,18 +105,29 @@ class ApiController
                 }
                 if (isset($breedImages['message']) && $breedImages['status'] == 'success') {
                     foreach ($breedImages['message'] as $breedImage) {
-                        $inserts = [
-                            ':breed_id' => $breed['id'],
+                        //Check if image exist in db
+                        $db = Database::getInstance()->getConnection();
+                        $query = $db->prepare('SELECT * FROM breed_images WHERE image  = :image');
+                        $query->execute([
                             ':image' => $breedImage
-                        ];
-                        if (count($inserts) > 0) {
-                            $query = $db->prepare('INSERT INTO breed_images (breed_id, image) VALUES (:breed_id, :image)');
-                            $query->execute($inserts);
+                        ]);
+                        //If no insert new breed
+                        if ($query->rowCount() == 0) {
+                            $inserts = [
+                                ':breed_id' => $breed['id'],
+                                ':image' => $breedImage
+                            ];
+                            if (count($inserts) > 0) {
+                                $query = $db->prepare('INSERT INTO breed_images (breed_id, image) VALUES (:breed_id, :image)');
+                                $query->execute($inserts);
+                                $insertsCount++;
+                            }
                         }
                     }
                 }
             }
         }
+        return $insertsCount;
     }
 
     public function getFactsAboutDogs(int $numberOfFacts = 1): array
@@ -110,23 +146,4 @@ class ApiController
         }
         return $dogFacts;
     }
-
-//    public function storeFacts(array $facts)
-//    {
-//        if ($facts && count($facts) > 1) {
-//            foreach ($facts as $fact) {
-//                try {
-//                    $db = Database::getInstance()->getConnection();
-//                    $query = $db->prepare('INSERT INTO dog_facts (fact_id, fact) VALUES (:fact_id, :fact)');
-//
-//                    $query->execute([
-//                        'fact_id' => $fact['id'],
-//                        'fact' => $fact['fact']
-//                    ]);
-//                } catch (Throwable) {
-//                }
-//            }
-//        }
-//    }
-
 }
