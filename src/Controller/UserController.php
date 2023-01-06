@@ -57,7 +57,6 @@ class UserController extends Controller
                 Session::put('error', 'Podaj nazwę użytkownika');
             }
             //Todo sprawdzić czy nazwa usera nie jset już zajęta,
-            // buttony bootstrap zielony na inny i zmienić w edycji usera,
             // wyjebać hieny itp
             // admin przycisk seedowania bazy z api
 
@@ -161,6 +160,26 @@ class UserController extends Controller
 
         } catch (Throwable) {
             return false;
+        }
+    }
+
+    public function seedImages()
+    {
+        $isAdmin = Auth::admin();
+        if (!$isAdmin) {
+            Session::put('error', 'Brak uprawnień');
+            $this->view->render('/index');
+        }
+
+        try {
+            $api = new ApiController('https://dog.ceo/api/');
+            Session::put('breed-seed', "Dodano {$api->getBreedList()} rekordów do listy ras");
+            Session::put('image-seed', "Dodano {$api->getBreedsImages()} nowych zdjęć");
+
+            $this->index();
+        } catch (Throwable) {
+            Session::put('error', 'Błąd generowania zdjęć z API');
+            $this->view->render('/user-profile');
         }
     }
 }

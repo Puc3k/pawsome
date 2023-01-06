@@ -18,6 +18,7 @@
                         <li>Email: <?= $params['user']['email'] ?></li>
                         <li>Rola: <?= $params['user']['role'] ?></li>
                     </ul>
+                    <a href="/update-images" class="btn button-color-green w-100 mb-3">Aktualizuj zdjęcia psów</a>
                     <a href="/edit-user-profile" class="btn button-color w-100">Edytuj dane</a>
                 </div>
             </div>
