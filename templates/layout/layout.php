@@ -1,4 +1,5 @@
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="pl">
 <!-- header -->
 <?php require_once('header.php') ?>
 <!-- end of header -->

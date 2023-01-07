@@ -3,7 +3,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="google-site-verification" content="1tul_6YNu7Z4_al4pnUkG_lwMgg9j9Dn_ubbkReBEFI" />
-    <title>Pawsome</title>
+    <meta name="description" content="Pawsome 🐶 to zabawna i wciągająca przygoda, w której gracze wybierają jedno z dwóch dostępnych zdjęć psów, żwycięzca może być tylko 1!">
+    <title>Pawsome - wybierz najlepsze zdjęcie psa!</title>
     <link rel="icon" href="/public/images/logo.webp">
     <link rel="stylesheet" href="/public/css/style.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
