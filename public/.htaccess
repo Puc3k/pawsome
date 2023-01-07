@@ -8,5 +8,3 @@ RewriteCond %{REQUEST_FILENAME} !-l
 
 RewriteRule ^(.+)$ index.php?page=$1 [QSA,L]
 
-
-
