@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Core\Controller;
+use App\Helpers\Auth;
 use App\Helpers\Database;
 use App\Helpers\Session;
 use App\Model\User;
@@ -13,126 +14,176 @@ class AuthController extends Controller
 {
     public function __construct()
     {
+        parent::__construct();
+    }
+
+    public function login()
+    {
         $this->checkIsUserLogged();
+
+        if ($this->request->isPost()) {
+
+            $validated = $this->validLoginData($this->request->getPost());
+
+            $this->checkIfLoginErrors($validated);
+
+            //redirect back to signup if there was any problem
+            if (Session::exists('error')) {
+                //pass form data back to login page
+                $this->view->render('login', [
+                    'email' => $validated['email'] ?? '',
+                    'userName' => $validated['userName'] ?? ''
+                ]);
+            }
+
+            try {
+                $user = User::getUser($validated);
+                if (!$user) {
+                    Session::put('error', 'Nie znaleziono takiego użytkownika lub podane dane są błędne');
+                    $this->view->render('login', [
+                        'email' => $validated['email'] ?? '',
+                        'userName' => $validated['userName'] ?? ''
+                    ]);
+                }
+
+                $dbPassword = $user['password'];
+                // compare form password with database password
+                if (password_verify($validated['password'], $dbPassword)) {
+                    // set session for access control
+                    Session::put('user-id', $user['id']);
+                    Session::put('role', $user['role']);
+                    Session::put('logged', true);
+                    if (isset($user['avatar'])) {
+                        Session::put('avatar', $user['avatar']);
+                    }
+
+                    $this->redirect('/home');
+                }
+            } catch (Throwable) {
+                Session::put('error', 'Błąd podczas tworzenia użytkownika. Spróbuj ponownie');
+
+            }
+        }
+
+        $this->view->render('login');
     }
 
 
-    public function login(array $post)
+    public function register()
     {
-        if ($this->request->postParam('submit')) {
-            $validated = $this->validLoginData();
+        $this->checkIsUserLogged();
+
+        if ($this->request->isPost()) {
+
+            $validated = Auth::validFormPostData($this->request->getPost());
 
             //Check input values
-            if (!$validated['firstName']) {
-                Session::put('error', 'Podaj imię');
-            } elseif (!$validated['lastName']) {
-                Session::put('error', 'Podaj nazwisko');
-            } elseif (!$validated['userName']) {
-                Session::put('error', 'Podaj nazwę użytkownika');
-            } elseif (!$validated['email']) {
-                Session::put('error', 'Podaj email');
-            } elseif (strlen($validated['createPassword']) < 8 || strlen($validated['confirmPassword']) < 8) {
-                Session::put('error', 'Hasło powinno mieć min 8 znaków');
-            } elseif (!$validated['avatar']['name']) {
-                Session::put('error', 'Proszę dodaj zdjęcie profilowe');
-            } else {
-                //check if passwords don't match
-                if ($validated['createPassword'] !== $validated['confirmPassword']) {
-                    Session::put('error', 'Hasła nie są jednakowe');
-                } else {
-                    //hash password
-                    $hashedPassword = password_hash($validated['createPassword'], PASSWORD_DEFAULT);
-                    $userExist = User::checkIfUserExist($validated['userName'], $validated['email']);
-                    if ($userExist) {
-                        Session::put('error', 'Email już był wykorzystany do założenia konta');
+            Auth::checkIfFormDataErrors($validated);
 
-                    } else {
-                        //work on avatar
-                        //rename avatar
-                        $time = time(); //make each name unique using current timestamp
-                        $avatarName = $time . $validated['avatar']['name'];
-                        $avatarTmpName = $validated['avatar']['tmp_name'];
-                        $avatarDestinationPath = 'images/' . $avatarName;
-
-                        //make sure file is an image
-                        $allowedExtensions = ['png', 'jpg', 'jpeg'];
-                        $extension = explode('.', $avatarName);
-                        $extension = end($extension);
-                        if (in_array($extension, $allowedExtensions)) {
-                            //make sure image is not too large (1mb+)
-                            if ($validated['avatar']['size'] < 1000000) {
-                                //upload avatar
-                                move_uploaded_file($avatarTmpName, $avatarDestinationPath);
-                            } else {
-                                Session::put('error', 'Plik jest zbyt duży, maksymalny rozmiar to 1MB');
-                            }
-                        } else {
-                            Session::put('error', 'Zły format');
-                        }
-
-                    }
-                }
-
+            //redirect back to register if there was any problem
+            if (Session::exists('error')) {
+                //pass form data back to login page
+                $this->view->render('register', [
+                    'email' => $validated['email'] ?? '',
+                    'userName' => $validated['userName'] ?? ''
+                ]);
             }
+            //Check if user exist
+            $userExist = User::checkIfUserExist($validated['userName'], $validated['email']);
+            if ($userExist) {
+                Session::put('error', 'Ten adres e-mail jest już zajęty.');
+            }
+
             //redirect back to signup if there was any problem
-            if (isset($_SESSION['error'])) {
+            if (Session::exists('error')) {
                 //pass form data back to signup page
-                $_SESSION['signup-data'] = $_POST;
-                header('location: /signup');
-                die();
-            } else {
-                try {
-                    $db = Database::getInstance()->getConnection();
-                    //param binding
-                    $query = $db->prepare('
-                    INSERT INTO users (first_name, last_name, username, email, password, avatar, is_admin) 
-                    VALUES (:firstName, :lastName, :username, :email, :password, :avatar, :isAdmin)');
-
-                    $query->execute([
-                        'firstName' => $validated['firstName'],
-                        'last_name' => $validated['firstName'],
-                        'username' => $validated['firstName'],
-                        'email' => $validated['firstName'],
-                        'password' => $hashedPassword,
-                        'avatar' => $avatarName,
-                        'isAdmin' => 0,
-                    ]);
-
-                } catch (Throwable) {
-                    Session::put('error', 'Błąd podczas tworzenia użytkownika. Spróbuj ponownie');
-                }
-
-                Session::put('success', 'Zarejestrowano pomyślnie. Zaloguj się');
-
-                header('location' . APP_URL . '/signin');
-                die();
+                $this->view->render('register', [
+                    'email' => $validated['email'],
+                    'userName' => $validated['userName']
+                ]);
             }
 
-        } else {
-            //if button wasn't clicked, bounce back to signup page
-            header('location: ' . APP_URL . '/signup');
-            die();
+            //hash password
+            $hashedPassword = password_hash($validated['createPassword'], PASSWORD_DEFAULT);
+
+            $registerUser = $this->registerUser($validated, $hashedPassword);
+
+            if (!$registerUser) {
+                Session::put('error', 'Błąd podczas tworzenia użytkownika. Spróbuj ponownie');
+                $this->view->render('register', [
+                    'email' => $validated['email'],
+                    'userName' => $validated['userName']
+                ]);
+            }
+
+            Session::put('success', 'Zarejestrowano pomyślnie. Zaloguj się');
+            $this->redirect('/login');
         }
 
+        $this->view->render('register');
     }
 
     #[NoReturn] public function logout()
     {
-        session_destroy();
-        header('location: ' . APP_URL);
+        Session::destroy();
+        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
+            $link = "https";
+        else $link = "http";
+
+        // Here append the common URL characters.
+        $link .= "://";
+
+        // Append the host(domain name, ip) to the URL.
+        $link .= $_SERVER['HTTP_HOST'];
+
+        header('Location: ' . $link);
         die();
+
     }
 
-    public function validLoginData(): array
+    public function validLoginData(array $data): array
     {
-        $data['firstName'] = filter_var($_POST['firstName'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $data['lastName'] = filter_var($_POST['lastName'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $data['userName'] = filter_var($_POST['userName'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $data['email'] = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
-        $data['createPassword'] = filter_var($_POST['createPassword'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $data['confirmPassword'] = filter_var($_POST['confirmPassword'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $data['avatar'] = $_FILES['avatar'];
+        $data['email'] = filter_var($_POST['email'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $data['password'] = filter_var($_POST['password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
         return $data ?? [];
+    }
+
+    public function checkIfLoginErrors(array $data)
+    {
+        if (!$data['email']) {
+            Session::put('error', 'Podaj adres email');
+        } elseif (!$data['password']) {
+            Session::put('error', 'Podaj hasło');
+        }
+    }
+
+    public function registerUser(array $data, string $hashedPassword): bool
+    {
+        try {
+            $db = Database::getInstance()->getConnection();
+            //param binding
+            $query = $db->prepare('
+                    INSERT INTO users (username, email, password, role) 
+                    VALUES (:username, :email, :password, :role)');
+
+            return $query->execute([
+                'username' => $data['userName'],
+                'email' => $data['email'],
+                'password' => $hashedPassword,
+                'role' => 'user'
+            ]);
+
+        } catch (Throwable) {
+            return false;
+        }
+    }
+
+    public function checkIsUserLogged()
+    {
+        $isUserLogged = Auth::isUserLogged();
+        if ($isUserLogged) {
+            $this->redirect('/home');
+        }
     }
 }

@@ -8,10 +8,12 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $api = new ApiController();
-//        $api->getBreedList();
-//        $api->getBreedsImages();
+        $api = new ApiController('https://dogapi.dog/api/v2/');
 
-        $this->view->render('index');
+        $dogFact = $api->getFactsAboutDogs(3);
+
+        $this->view->render('index', [
+            'dogFact' => $dogFact
+        ]);
     }
 }

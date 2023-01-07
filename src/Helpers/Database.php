@@ -10,18 +10,16 @@ class Database
 {
     private static ?Database $instance = null;
     private PDO $connection;
-    private string $host = 'localhost';
-    private string $username = 'pawsome';
-    private string $password = 'p[HM65YxAJU0qsuS';
-    private string $database = 'pawsome';
 
     private function __construct()
     {
+        $config = Config::getConfig();
+
         try {
             $this->connection = new PDO(
-                "mysql:host=" . $this->host . ";port=3306;charset=utf8mb4;dbname=$this->database",
-                $this->username,
-                $this->password
+                "mysql:host=" . $config['db']['host'] . ";port=3306;charset=utf8mb4;dbname={$config['db']['database']}",
+                $config['db']['user'],
+                $config['db']['password']
             );
         } catch (PDOException $e) {
             exit('Błąd podczas łączenia z bazą danych: ' . $e->getCode());

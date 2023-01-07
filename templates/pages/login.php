@@ -1,29 +1,35 @@
-<section class="form_section">
-    <div class="container form_section-conainer">
-        <h2>Sign Up</h2>
-        <?php if (isset($_SESSION['signup'])) : ?>
-            <div class="alert_message error">
-                <p>
-                    <?= $_SESSION['signup'];
-                    unset($_SESSION['signup']);
-                    ?>
-                </p>
+<section class="container-fluid form-container d-flex justify-content-center align-items-center flex-column">
+    <div class="row w-100">
+        <div class="col-12 col-md-6 offset-md-3 d-flex justify-content-center align-items-center">
+            <div class="col-12 col-xl-8 glass-effect p-3 p-lg-4">
+                <h4>Logowanie</h4>
+                <form method="POST">
+                    <div class="mb-4 form-group">
+                        <label for="email" class="form-label">Adres email</label>
+                        <input type="text" class="form-control" name="email" value="<?= $params['email'] ?? '' ?>"
+                               placeholder="Podaj email" id="email">
+
+                    </div>
+                    <div class="mb-4 form-group">
+                        <label for="password" class="form-label">Hasło</label>
+                        <input type="password" class="form-control" name="password"
+                               value="" placeholder="Wpisz hasło" id="password">
+                    </div>
+
+                    <div class="justify-content-center form-group">
+                        <button type="submit" class="form-outline col-12 btn button-color">Zaloguj</button>
+                        <div class="col-12 text-center mt-1">
+                            <small>Nie masz konta? <a href="/register">Zarejestruj się</a></small>
+                        </div>
+                    </div>
+                </form>
+
             </div>
-        <?php endif ?>
-        <!-- "multipart/form-data" because we have file upload -->
-        <form action="<?= $_SERVER['HTTP_HOST'] ?>signup-logic.php" enctype="multipart/form-data" method="POST">
-            <input type="text" name="firstName" value="<?= $params['firstName'] ?>" placeholder="First Name">
-            <input type="text" name="lastName" value="<?= $params['lastName'] ?>" placeholder="Last Name">
-            <input type="text" name="userName" value="<?= $params['userName'] ?>"  placeholder="Username">
-            <input type="email" name="email" value="<?= $params['email'] ?>" placeholder="Email">
-            <input type="password" name="createPassword" value="<?= $params['createPassword']?>" placeholder="Create Password">
-            <input type="password" name="confirmPassword" value="<?= $params['confirmPassword']?>" placeholder="Confirm Password">
-            <div class="form_control">
-                <label for="avatar">User Avatar</label>
-                <input type="file" name="avatar" id="avatar">
-            </div>
-            <button type="submit" name="submit" class="btn">Sign Up</button>
-            <small>Already have an account? <a href="signin.php">Sign In</a></small>
-        </form>
+        </div>
+    </div>
+    <div class="row w-100 d-flex justify-content-center align-items-center">
+        <div class="col-12 col-md-6 mt-5">
+            <img src="/public/images/dog-background.png" class="w-100" alt="Dog login form">
+        </div>
     </div>
 </section>

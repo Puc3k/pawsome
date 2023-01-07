@@ -5,7 +5,7 @@ namespace App\Helpers;
 class Session
 {
     //Jeśli nie ma sesji tworzy nową
-    public static function init()
+    public static function init(): void
     {
         if (session_id() == "") {
             session_start();
@@ -13,13 +13,14 @@ class Session
     }
 
     //Niszczenie sesji
-    public static function destroy()
+    public static function destroy(): void
     {
-        session_destroy();
+        if (session_status() === PHP_SESSION_ACTIVE)
+            session_destroy();
     }
 
     //Sprawdzenie czy wartość istnieje w sesji
-    public static function exists($key)
+    public static function exists($key): bool
     {
         return (isset($_SESSION[$key]));
     }
@@ -30,6 +31,7 @@ class Session
         if (self::exists($key)) {
             return ($_SESSION[$key]);
         }
+        return '';
     }
 
     //Dodanie do sesji wartości
