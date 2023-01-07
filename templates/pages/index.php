@@ -21,7 +21,7 @@
         </div>
 
         <div class="row border-bottom">
-            <div class="col-12 col-lg-8">
+            <div class="col-12 col-lg-8 mt-4">
                 <?php foreach ($params['dogFact'] ?? [] as $key => $value): ?>
                     <p class="lead">
                         <?= "<strong>" . $key + 1 . ".</strong> {$value['fact']}" ?>
