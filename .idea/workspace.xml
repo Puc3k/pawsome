@@ -5,60 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4393dc76-9668-4e9b-a8d7-f6283a1cae28" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/.config.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/crown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/dog-avatar.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/dog-background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/dog-facts.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/dog-profile-background.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/dog1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/dog2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/RankingController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/layout/messages.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/pages/edit-user-profile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/pages/quiz.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/pages/ranking-admin.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/pages/ranking-user.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/pages/ranking.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/pages/register.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/pages/user-profile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/pages/users-list.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/.config.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/config/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ApiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/QuizController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/QuizController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/App.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/App.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Request.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Request.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/View.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/View.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/Auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/Auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/Config.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/Config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/Database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/Session.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/Session.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/layout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/navigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/navigation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/about.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/add-post.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/signin.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/signup.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +80,7 @@
       <workItem from="1671131494588" duration="8302000" />
       <workItem from="1672154422319" duration="200000" />
       <workItem from="1673102317897" duration="1151000" />
-      <workItem from="1673104322491" duration="294000" />
+      <workItem from="1673104322491" duration="496000" />
     </task>
     <servers />
   </component>
