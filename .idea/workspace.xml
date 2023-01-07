@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4393dc76-9668-4e9b-a8d7-f6283a1cae28" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/user-profile/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/.config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/.config.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/App.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/App.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/edit-user-profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/edit-user-profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/pages/user-profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/user-profile.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +82,7 @@
       <workItem from="1671131494588" duration="8302000" />
       <workItem from="1672154422319" duration="200000" />
       <workItem from="1673102317897" duration="1151000" />
-      <workItem from="1673104322491" duration="1092000" />
+      <workItem from="1673104322491" duration="1409000" />
     </task>
     <servers />
   </component>
