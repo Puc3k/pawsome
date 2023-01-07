@@ -46,7 +46,7 @@
                 <h1 class="text-center text-light pt-4">Twój wybór to:</h1>
                 <div class="row justify-content-center">
                     <div class="col-lg-5">
-                        <div class="card shadow-sm m-1">
+                        <div class="card shadow-sm m-1 mb-4">
                             <img class="dog-image w-100" src="<?= $params['winner']['image'] ?? '' ?>"
                                  width="500"
                                  height="500" alt="Winner photo!">
