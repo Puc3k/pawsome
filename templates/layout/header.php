@@ -20,4 +20,9 @@
 
 	  gtag('config', 'G-41XRRBQS8N');
 	</script>
+    <!-- Dog images from -->
+    <!-- https://dog.ceo/ (http://vision.stanford.edu/aditya86/ImageNetDogs/)-->
+
+    <!-- Dog facts from -->
+    <!--    https://dogapi.dog/-->
 </head>

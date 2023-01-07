@@ -1,3 +1,9 @@
+# Images from:
+API: https://dog.ceo/ (http://vision.stanford.edu/aditya86/ImageNetDogs/)
+
+# Dog facts from:
+API: https://dogapi.dog/
+
 # PHP
 Zadania:
 [Trello](https://trello.com/b/os4W8MXa/php)
