@@ -29,7 +29,7 @@
     </div>
     <div class="row w-100 d-flex justify-content-center align-items-center">
         <div class="col-12 col-md-6 mt-5">
-            <img src="/public/images/dog-background.png" class="w-100" alt="Dog login form">
+            <img src="/public/images/dog-background.webp" class="w-100" alt="Dog login form">
         </div>
     </div>
 </section>

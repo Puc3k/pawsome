@@ -8,7 +8,7 @@
                 przygoda, w której gracze wybierają jedno z dwóch dostępnych zdjęć psów. Gracze mogą przeglądać zdjęcia
                 psów i głosować na swojego faworyta. Na końcu quizu pokazuje się zdjęcie, które zwyciężyło. </p>
             <p class="d-flex justify-content-center align-items-center col-5"><a
-                        class="btn btn-lg button-color text-center col-12 col-md-6 col-lg-4" href="/quiz">Graj teraz</a>
+                        class="btn btn-lg quiz-button text-center col-12 col-md-6 col-lg-4" href="/quiz">Graj teraz</a>
             </p>
         </div>
     </div>
@@ -34,7 +34,7 @@
                 </p>
             </div>
             <div class="col-12 col-lg-4 dog-image-curiosity d-flex justify-content-center align-items-center">
-                <div class="dog-image w-75 h-75" style="background-image: url(/public/images/dog-facts.jpg)"></div>
+                <div class="dog-image w-75 h-75" style="background-image: url(/public/images/dog-facts.webp)"></div>
             </div>
         </div>
 

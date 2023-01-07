@@ -5,8 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4393dc76-9668-4e9b-a8d7-f6283a1cae28" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/images/background.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/dog-avatar.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/dog-background.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/dog-facts.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/dog-profile-background.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/logo.webp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/crown.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/dog-avatar.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/dog-background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/dog-facts.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/dog-profile-background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/dog1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/dog2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/layout/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/layout/navigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/navigation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pages/edit-user-profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/edit-user-profile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/pages/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pages/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pages/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pages/user-profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/user-profile.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,13 +67,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/config" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/images" />
       <recent name="$PROJECT_DIR$/config" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -81,7 +104,7 @@
       <workItem from="1671131494588" duration="8302000" />
       <workItem from="1672154422319" duration="200000" />
       <workItem from="1673102317897" duration="1151000" />
-      <workItem from="1673104322491" duration="4803000" />
+      <workItem from="1673104322491" duration="8516000" />
     </task>
     <servers />
   </component>

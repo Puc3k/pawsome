@@ -11,7 +11,7 @@
                                  width="360"
                                  height="360" alt="User avatar">
                         <?php else : ?>
-                            <img src="/public/images/dog-avatar.jpg"
+                            <img src="/public/images/dog-avatar.webp"
                                  class="rounded rounded-circle mx-auto d-block p-4 max-w-100"
                                  width="360"
                                  height="360" alt="<?= $params['user']['username'] ?> User avatar placeholder">

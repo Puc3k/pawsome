@@ -7,7 +7,7 @@ use App\Helpers\Session;
 <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center py-2 py-lg-3">
     <div class="container-fluid position-relative bg-light">
         <a class="navbar-brand d-inline" href="/">
-            <img src="/public/images/logo.png" class="mx-2 mb-2" width="32" height="32" alt="Pawsome logo">
+            <img src="/public/images/logo.webp" class="mx-2 mb-2" width="32" height="32" alt="Pawsome logo">
             <span class="fs-4 bold">Pawsome</span>
         </a>
         <button class="navbar-toggler py-0 px-0" type="button" data-bs-toggle="collapse"

@@ -4,6 +4,7 @@
     --button-color-hover: rgba(236, 168, 105, 0.8);
     --button-color-green: #7bd567;
     --button-color-green-hover: rgba(123, 213, 103, 0.8);
+    --button-color-quiz-hover: rgb(236, 173, 116);
 
 }
 
@@ -19,7 +20,7 @@ main {
 }
 
 .quiz-index {
-    background-image: url(/public/images/background.png);
+    background-image: url(/public/images/background.webp);
     image-orientation: from-image;
     background-size: cover;
     background-position: center;
@@ -27,7 +28,7 @@ main {
 }
 
 .quiz {
-    background-image: url(/public/images/background.png);
+    background-image: url(/public/images/background.webp);
     image-orientation: from-image;
     background-size: cover;
     background-position: center;
@@ -35,7 +36,7 @@ main {
 }
 
 .ranking {
-    background-image: url(/public/images/background.png);
+    background-image: url(/public/images/background.webp);
     image-orientation: from-image;
     background-size: cover;
     background-position: center;
@@ -117,8 +118,17 @@ main {
 
 }
 
+.quiz-button {
+    background-color: var(--button-color) !important;
+    color: var(--button-font-color) !important;
+}
+
+.quiz-button:hover {
+    background-color: var(--button-color-quiz-hover) !important;
+}
+
 .profile-background {
-    background-image: url(/public/images/dog-profile-background.jpg);
+    background-image: url(/public/images/dog-profile-background.webp);
     image-orientation: from-image;
     background-size: cover;
     background-position: center;
