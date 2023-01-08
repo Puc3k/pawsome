@@ -6,24 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4393dc76-9668-4e9b-a8d7-f6283a1cae28" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ApiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/QuizController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/QuizController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/App.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/App.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Request.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Request.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/View.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/View.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/Auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/Auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/Config.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/Config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/Database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/Session.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/Session.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/debug.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/debug.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/quiz.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/quiz.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +84,7 @@
       <workItem from="1673102317897" duration="1151000" />
       <workItem from="1673104322491" duration="9281000" />
       <workItem from="1673119146202" duration="589000" />
-      <workItem from="1673190438811" duration="3098000" />
+      <workItem from="1673190438811" duration="3482000" />
     </task>
     <servers />
   </component>

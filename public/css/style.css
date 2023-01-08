@@ -69,7 +69,7 @@ main {
 }
 
 .dog-hover:hover {
-    outline-color: rgba(171, 160, 87, 0.5);
+    outline-color: rgb(39 225 136 / 40%);
     cursor: pointer;
 }
 
