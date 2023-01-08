@@ -7,12 +7,12 @@
                 <form method="POST" id="dog-form">
                 <div class="row">
                         <div class="col-lg-5">
-                            <div class="card shadow-sm m-1">
+                            <div class="card shadow-sm m-1 dog-hover">
                                 <input type="radio" name="round-dog-img" id="img1"
                                        value="<?= $params['img1']['id'] ?? '' ?>"
                                        class="d-none" onchange="this.form.submit()">
                                 <label for="img1">
-                                    <img class="dog-image w-100 dog-input" src="<?= $params['img1']['image'] ?? '' ?>"
+                                    <img class="dog-image w-100" src="<?= $params['img1']['image'] ?? '' ?>"
                                          width="500"
                                          height="500" alt="Image dog 1">
                                 </label>
@@ -26,12 +26,12 @@
                                 VS</h1>
                         </div>
                         <div class="col-lg-5">
-                            <div class="card shadow-sm m-1 mb-5">
+                            <div class="card shadow-sm m-1 mb-5 dog-hover">
                                 <input type="radio" name="round-dog-img" id="img2"
                                        value="<?= $params['img2']['id'] ?? '' ?>"
                                        class="d-none" onchange="this.form.submit()">
                                 <label for="img2">
-                                    <img class="dog-image w-100 dog-input" src="<?= $params['img2']['image'] ?? '' ?>"
+                                    <img class="dog-image w-100" src="<?= $params['img2']['image'] ?? '' ?>"
                                          width="500"
                                          height="500" alt="Image dog 2">
                                 </label>

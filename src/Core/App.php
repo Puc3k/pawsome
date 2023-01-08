@@ -61,6 +61,7 @@ class App
         };
     }
 
+    //#[NoReturn] atrybut od PHPstorm IDE
     #[NoReturn] private function actionNotFound(): void
     {
         header('HTTP/1.1 404 Not Found');

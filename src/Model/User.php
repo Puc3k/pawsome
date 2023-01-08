@@ -13,7 +13,7 @@ class User
     {
         //check if userName or email already exist
         $db = Database::getInstance()->getConnection();
-        //param binding
+        //param binding to prevent SQL Injection
         $query = $db->prepare('SELECT * FROM users WHERE username=:username OR email=:email');
         $query->execute([
             'username' => $userName,
@@ -27,7 +27,7 @@ class User
     {
         //check if userName or email already exist
         $db = Database::getInstance()->getConnection();
-        //param binding
+        //param binding to prevent SQL Injection
         $query = $db->prepare('SELECT * FROM users WHERE username=:username');
         $query->execute([
             'username' => $userName,
@@ -39,7 +39,7 @@ class User
     public static function getUser(array $data): bool|array
     {
         $db = Database::getInstance()->getConnection();
-        //param binding
+        //param binding to prevent SQL Injection
         $query = $db->prepare('
                     SELECT * FROM users WHERE email= :email');
         $query->execute([
@@ -58,7 +58,7 @@ class User
     public static function getUserById(int $id): bool|array
     {
         $db = Database::getInstance()->getConnection();
-        //param binding
+        //param binding to prevent SQL Injection
         $query = $db->prepare('
                     SELECT * FROM users WHERE id= :id');
         $query->execute([

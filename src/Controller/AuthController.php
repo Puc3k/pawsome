@@ -19,15 +19,16 @@ class AuthController extends Controller
 
     public function login()
     {
+        //Chekc if user is logged in
         $this->checkIsUserLogged();
-
+        //Jeśli request to POST
         if ($this->request->isPost()) {
 
             $validated = $this->validLoginData($this->request->getPost());
 
             $this->checkIfLoginErrors($validated);
 
-            //redirect back to signup if there was any problem
+            //Redirect to login page if any error
             if (Session::exists('error')) {
                 //pass form data back to login page
                 $this->view->render('login', [
@@ -47,9 +48,9 @@ class AuthController extends Controller
                 }
 
                 $dbPassword = $user['password'];
-                // compare form password with database password
+                //Check if post password is same as this in db
                 if (password_verify($validated['password'], $dbPassword)) {
-                    // set session for access control
+                    //Dodanie wartości do sesji
                     Session::put('user-id', $user['id']);
                     Session::put('role', $user['role']);
                     Session::put('logged', true);
@@ -71,10 +72,11 @@ class AuthController extends Controller
 
     public function register()
     {
+        //Check if user is logged in
         $this->checkIsUserLogged();
-
+        //Jeśli request to post
         if ($this->request->isPost()) {
-
+            //validate data
             $validated = Auth::validFormPostData($this->request->getPost());
 
             //Check input values
@@ -126,14 +128,15 @@ class AuthController extends Controller
     #[NoReturn] public function logout()
     {
         Session::destroy();
+        //Check if SSL protocol
         if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
             $link = "https";
         else $link = "http";
 
-        // Here append the common URL characters.
+        //Destination prepare
         $link .= "://";
 
-        // Append the host(domain name, ip) to the URL.
+        // Append the host
         $link .= $_SERVER['HTTP_HOST'];
 
         header('Location: ' . $link);
@@ -143,6 +146,7 @@ class AuthController extends Controller
 
     public function validLoginData(array $data): array
     {
+        //Sanityzacja - usuniecie znakow specjalnych, sprawdzenie odpowiedniego formatu
         $data['email'] = filter_var($_POST['email'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $data['password'] = filter_var($_POST['password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
@@ -151,6 +155,7 @@ class AuthController extends Controller
 
     public function checkIfLoginErrors(array $data)
     {
+        //If email or password empty
         if (!$data['email']) {
             Session::put('error', 'Podaj adres email');
         } elseif (!$data['password']) {
@@ -162,7 +167,7 @@ class AuthController extends Controller
     {
         try {
             $db = Database::getInstance()->getConnection();
-            //param binding
+            //param binding to prevent SQL Injection
             $query = $db->prepare('
                     INSERT INTO users (username, email, password, role) 
                     VALUES (:username, :email, :password, :role)');
@@ -181,6 +186,7 @@ class AuthController extends Controller
 
     public function checkIsUserLogged()
     {
+        //If user not logged in redirect to home page
         $isUserLogged = Auth::isUserLogged();
         if ($isUserLogged) {
             $this->redirect('/home');

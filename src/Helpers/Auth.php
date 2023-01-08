@@ -6,6 +6,7 @@ class Auth
 {
     public static function guest(): bool
     {
+        //Check if user has no role and is not logged in
         if (!Session::exists('role') && !Session::exists('logged')) {
             return true;
         }
@@ -14,6 +15,7 @@ class Auth
 
     public static function user(): bool
     {
+        //Check if user is logged and has role = 'user'
         if (Session::exists('role') && Session::exists('logged')) {
             $role = Session::get('role');
             $logged = Session::get('logged');
@@ -25,6 +27,7 @@ class Auth
 
     public static function admin(): bool
     {
+        //Check if user is logged and has role = 'admin'
         if (Session::exists('role') && Session::exists('logged')) {
             $role = Session::get('role');
             $logged = Session::get('logged');
@@ -36,6 +39,7 @@ class Auth
 
     public static function isUserLogged(): bool
     {
+        //Check if user is logged and has any role
         if (!Session::exists('role') && !Session::exists('logged')) {
             return false;
         }
@@ -44,6 +48,7 @@ class Auth
 
     public static function validFormPostData(array $data): array
     {
+        //Sanitize post form data, remove special chars, check format
         $data['userName'] = filter_var($_POST['userName'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $data['email'] = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
         $data['createPassword'] = filter_var($_POST['createPassword'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -55,7 +60,7 @@ class Auth
     public static function checkIfFormDataErrors(array $data): void
     {
         if ($data) {
-            //Check input values
+            //Check input values if it is missing set error
             if (!$data['userName']) {
                 Session::put('error', 'Podaj nazwę użytkownika');
             } elseif (!$data['email']) {
@@ -67,5 +72,4 @@ class Auth
             }
         }
     }
-
 }

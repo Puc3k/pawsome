@@ -25,7 +25,8 @@ class Database
             exit('Błąd podczas łączenia z bazą danych: ' . $e->getCode());
         }
     }
-
+    //If there is no instance create new and return
+    //If db instance exist return existing one
     public static function getInstance(): ?Database
     {
         if (!self::$instance) {
@@ -35,6 +36,7 @@ class Database
         return self::$instance;
     }
 
+    //Get db connection
     public function getConnection(): PDO
     {
         return $this->connection;
@@ -43,6 +45,7 @@ class Database
     /**
      * @throws Exception
      */
+    //Prevent from db object cloning
     final public function __clone()
     {
         throw new Exception('Feature disabled.');
@@ -51,6 +54,7 @@ class Database
     /**
      * @throws Exception
      */
+    //Disable wakeup method, protection against restoring lost connections to the database
     final public function __wakeup()
     {
         throw new Exception('Feature disabled.');

@@ -62,13 +62,13 @@ main {
     background-position: center;
 }
 
-.dog-input {
+.dog-hover {
     outline: 1rem solid transparent;
     transition: outline-color .2s ease-in-out;
 
 }
 
-.dog-input:hover {
+.dog-hover:hover {
     outline-color: rgba(171, 160, 87, 0.5);
     cursor: pointer;
 }

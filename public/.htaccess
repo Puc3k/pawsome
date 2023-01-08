@@ -2,6 +2,7 @@ RewriteEngine On
 
 Options -Indexes
 
+#redirect all traffic to the main application file
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-l
